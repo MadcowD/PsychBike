@@ -9,6 +9,8 @@ import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
+import com.punchline.microspace.entities.SpaceWorld;
 
 public class MicroSpace implements ApplicationListener {
 	private OrthographicCamera camera;
@@ -16,12 +18,17 @@ public class MicroSpace implements ApplicationListener {
 	private Texture texture;
 	private Sprite sprite;
 	
+	private SpaceWorld world;
+	private Box2DDebugRenderer renderer;
+	
 	@Override
 	public void create() {		
 		float w = Gdx.graphics.getWidth();
 		float h = Gdx.graphics.getHeight();
 		
-		camera = new OrthographicCamera(1, h/w);
+		camera = new OrthographicCamera();
+		camera.setToOrtho(false, w, h);
+		
 		batch = new SpriteBatch();
 		
 		texture = new Texture(Gdx.files.internal("data/libgdx.png"));
@@ -33,6 +40,9 @@ public class MicroSpace implements ApplicationListener {
 		sprite.setSize(0.9f, 0.9f * sprite.getHeight() / sprite.getWidth());
 		sprite.setOrigin(sprite.getWidth()/2, sprite.getHeight()/2);
 		sprite.setPosition(-sprite.getWidth()/2, -sprite.getHeight()/2);
+		
+		world = new SpaceWorld(camera);
+		renderer = new Box2DDebugRenderer();
 	}
 
 	@Override
@@ -43,13 +53,18 @@ public class MicroSpace implements ApplicationListener {
 
 	@Override
 	public void render() {		
-		Gdx.gl.glClearColor(1, 1, 1, 1);
+		Gdx.gl.glClearColor(0, 0, 0.2f, 1);
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 		
+		world.process();
+		
 		batch.setProjectionMatrix(camera.combined);
+		
 		batch.begin();
-		sprite.draw(batch);
+		//sprite.draw(batch);
 		batch.end();
+		
+		renderer.render(world.getPhysicsWorld(), camera.combined);
 	}
 
 	@Override
