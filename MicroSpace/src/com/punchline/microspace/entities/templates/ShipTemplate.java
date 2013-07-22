@@ -12,6 +12,7 @@ import com.punchline.javalib.entities.EntityTemplate;
 import com.punchline.javalib.entities.EntityWorld;
 import com.punchline.javalib.entities.components.BaseTransform;
 import com.punchline.javalib.entities.components.Body;
+import com.punchline.javalib.entities.components.render.Animation;
 import com.punchline.javalib.entities.components.render.Renderable;
 import com.punchline.javalib.entities.components.render.Sprite;
 
@@ -21,7 +22,7 @@ public class ShipTemplate implements EntityTemplate {
 	public Entity buildEntity(EntityWorld world, Object... args) {
 		Entity e = new Entity("", "Ships", "Ship");
 		
-		Renderable r = new Sprite(new Texture(Gdx.files.internal("data/test.png")));
+		Renderable r = new Animation(new Texture(Gdx.files.internal("data/test.png")), 4, 1, 0.5f);
 		e.addComponent(Renderable.class, r);
 		
 		BodyDef def = new BodyDef();
@@ -37,7 +38,7 @@ public class ShipTemplate implements EntityTemplate {
 		fixtureDef.friction = 0.4f;
 		fixtureDef.restitution = 0.6f;
 		
-		e.addComponent(BaseTransform.class, new Body(world, def, fixtureDef));
+		e.addComponent(BaseTransform.class, new Body(world, e, def, fixtureDef));
 		
 		return e;
 	}
