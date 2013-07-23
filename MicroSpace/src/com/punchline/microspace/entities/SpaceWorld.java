@@ -6,6 +6,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.punchline.javalib.entities.EntityWorld;
+import com.punchline.microspace.entities.systems.CameraMovementSystem;
 import com.punchline.microspace.entities.templates.scenery.BigPlanetTemplate;
 import com.punchline.microspace.entities.templates.scenery.BigStarTemplate;
 import com.punchline.microspace.entities.templates.scenery.SmallPlanetTemplate;
@@ -13,7 +14,7 @@ import com.punchline.microspace.entities.templates.scenery.SmallStarTemplate;
 import com.punchline.microspace.entities.templates.scenery.StarFieldTemplate;
 
 public class SpaceWorld extends EntityWorld {
-
+	
 	public SpaceWorld(Camera camera) {
 		super(camera, Vector2.Zero, true);
 		
@@ -46,6 +47,10 @@ public class SpaceWorld extends EntityWorld {
 	@Override
 	protected void buildSystems() {		
 		super.buildSystems();
+		
+		//Input
+		systems.addSystem(new CameraMovementSystem(camera, getBounds()));
+		
 	}
 
 	/**
