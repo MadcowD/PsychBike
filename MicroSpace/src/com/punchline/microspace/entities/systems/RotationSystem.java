@@ -10,12 +10,15 @@ public class RotationSystem extends ComponentSystem {
 	public RotationSystem() {
 		super(BaseTransform.class);
 	}
+	
+	@Override
+	public void dispose() { }
 
 	@Override
 	protected void onAdded(Entity e) {
 		BaseTransform t = e.getComponent();
 		
 		t.setAngularVelocity(1f);
-	}	
+	}
 	
 }

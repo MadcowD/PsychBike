@@ -14,7 +14,6 @@ import com.punchline.javalib.entities.components.BaseTransform;
 import com.punchline.javalib.entities.components.Body;
 import com.punchline.javalib.entities.components.render.Animation;
 import com.punchline.javalib.entities.components.render.Renderable;
-import com.punchline.javalib.entities.components.render.Sprite;
 
 public class ShipTemplate implements EntityTemplate {
 
