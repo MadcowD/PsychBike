@@ -53,7 +53,7 @@ public class SpaceWorld extends EntityWorld {
 	protected void buildEntities() {
 		super.buildEntities();
 		
-		createEntity("BigPlanet", Vector2.Zero);
+		createEntity("BigPlanet", new Vector2(0,0));
 	}
 	
 }
