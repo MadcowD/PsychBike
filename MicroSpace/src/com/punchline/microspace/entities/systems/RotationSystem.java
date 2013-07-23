@@ -16,8 +16,6 @@ public class RotationSystem extends ComponentSystem {
 		BaseTransform t = e.getComponent();
 		
 		t.setAngularVelocity(1f);
-	}
-	
-	
+	}	
 	
 }
