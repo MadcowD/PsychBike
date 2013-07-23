@@ -1,10 +1,16 @@
 package com.punchline.microspace.entities;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.punchline.javalib.entities.EntityWorld;
 import com.punchline.microspace.entities.templates.scenery.BigPlanetTemplate;
+import com.punchline.microspace.entities.templates.scenery.BigStarTemplate;
+import com.punchline.microspace.entities.templates.scenery.SmallPlanetTemplate;
+import com.punchline.microspace.entities.templates.scenery.SmallStarTemplate;
+import com.punchline.microspace.entities.templates.scenery.StarFieldTemplate;
 
 public class SpaceWorld extends EntityWorld {
 
@@ -19,11 +25,17 @@ public class SpaceWorld extends EntityWorld {
 	
 	@Override
 	public void process() {
-		// TODO Auto-generated method stub
 		super.process();
 	}
 
-
+	@Override
+	public Rectangle getBounds() {
+		return new Rectangle(
+				-Gdx.graphics.getWidth(), 
+				-Gdx.graphics.getHeight() / 2, 
+				Gdx.graphics.getWidth() * 2, 
+				Gdx.graphics.getHeight());
+	}
 
 	@Override
 	protected void positionCamera() {
@@ -39,14 +51,19 @@ public class SpaceWorld extends EntityWorld {
 	protected void buildTemplates() {
 		super.buildTemplates();
 		
+		//Scenery
 		addTemplate("BigPlanet", new BigPlanetTemplate());
+		addTemplate("SmallPlanet", new SmallPlanetTemplate());
+		addTemplate("BigStar", new BigStarTemplate());
+		addTemplate("SmallStar", new SmallStarTemplate());
+		addGroupTemplate("StarField", new StarFieldTemplate());
 	}
 
 	@Override
 	protected void buildEntities() {
 		super.buildEntities();
 		
-		createEntity("BigPlanet", Vector2.Zero);
+		createEntityGroup("StarField");
 	}
 	
 }

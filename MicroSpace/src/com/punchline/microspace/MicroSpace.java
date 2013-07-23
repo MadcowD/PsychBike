@@ -22,8 +22,8 @@ public class MicroSpace implements ApplicationListener {
 		Gdx.graphics.setTitle("Micro Space");
 		Gdx.graphics.setDisplayMode(800, 400, false);
 		
-		float w = Convert.pixelsToMeters(Gdx.graphics.getWidth());
-		float h = Convert.pixelsToMeters(Gdx.graphics.getHeight());
+		float w = Gdx.graphics.getWidth();
+		float h = Gdx.graphics.getHeight();
 		
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, w, h);
