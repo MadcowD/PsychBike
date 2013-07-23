@@ -13,11 +13,17 @@ public class SpaceWorld extends EntityWorld {
 		debugView.enabled = true; //TODO: Remember to disable this...
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	protected void buildSystems() {		
 		super.buildSystems();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	protected void buildTemplates() {
 		super.buildTemplates();
@@ -25,6 +31,9 @@ public class SpaceWorld extends EntityWorld {
 		addTemplate("BigPlanet", new BigPlanetTemplate());
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	protected void buildEntities() {
 		super.buildEntities();
