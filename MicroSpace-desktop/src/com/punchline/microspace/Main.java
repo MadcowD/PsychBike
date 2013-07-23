@@ -9,6 +9,6 @@ public class Main {
 		cfg.useGL20 = false;
 		cfg.resizable = false;
 		
-		new LwjglApplication(new MicroSpace(), cfg);
+		new LwjglApplication(new MicroSpace(), cfg); 
 	}
 }

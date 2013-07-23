@@ -21,8 +21,9 @@ public class SpaceWorld extends EntityWorld {
 		debugView.visible = true; //TODO: Remember to disable this...
 	}
 
-	
-	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void process() {
 		super.process();
@@ -47,6 +48,9 @@ public class SpaceWorld extends EntityWorld {
 		super.buildSystems();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	protected void buildTemplates() {
 		super.buildTemplates();
@@ -59,6 +63,9 @@ public class SpaceWorld extends EntityWorld {
 		addGroupTemplate("StarField", new StarFieldTemplate());
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	protected void buildEntities() {
 		super.buildEntities();
