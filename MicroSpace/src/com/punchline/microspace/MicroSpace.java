@@ -43,12 +43,6 @@ public class MicroSpace implements ApplicationListener {
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 		
 		world.process();
-		
-		batch.setProjectionMatrix(camera.combined);
-		
-		batch.begin();
-		//sprite.draw(batch);
-		batch.end();
 	}
 
 	@Override
