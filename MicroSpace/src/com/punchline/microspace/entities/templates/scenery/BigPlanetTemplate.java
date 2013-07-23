@@ -53,6 +53,7 @@ public class BigPlanetTemplate implements EntityTemplate {
 		};
 		
 		sprite.setPosition(position);
+		sprite.setScale((float)rand.nextDouble() / 2);
 		
 		e.addComponent(Renderable.class, sprite);
 		
