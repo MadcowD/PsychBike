@@ -13,8 +13,8 @@ public class StarFieldTemplate implements EntityGroupTemplate {
 
 	private static Random rand = new Random();
 	
-	private static final int BIG_PLANETS = 3;
-	private static final int SMALL_PLANETS = 8;
+	private static final int BIG_PLANETS = 3, BIG_PLANET_TYPES = 11;
+	private static final int SMALL_PLANETS = 6, SMALL_PLANET_TYPES = 6;
 	private static final int BIG_STARS = 8;
 	private static final int SMALL_STARS = 150;
 	
@@ -33,20 +33,25 @@ public class StarFieldTemplate implements EntityGroupTemplate {
 		float xRange = bounds.width / 2;
 		float yRange = bounds.height / 2;
 		
+		int furthestUsedPlanet = 0;
+		
 		for (int i = 0; i < BIG_PLANETS; i++) {
 			
 			Vector2 position = getSafePosition(xRange, yRange, BIG_PLANET_WIDTH, BIG_PLANET_HEIGHT);
 			
-			group.add(world.createEntity("BigPlanet", position));
-			
+			int type = furthestUsedPlanet + rand.nextInt(BIG_PLANET_TYPES / BIG_PLANETS) + 1;
+			group.add(world.createEntity("BigPlanet", position, type));
+			furthestUsedPlanet = type;
 		}
 		
+		furthestUsedPlanet = 0;
 		for (int i = 0; i < SMALL_PLANETS; i++) {
 			
 			Vector2 position = getSafePosition(xRange, yRange, SMALL_PLANET_WIDTH, SMALL_PLANET_HEIGHT);
 			
-			group.add(world.createEntity("SmallPlanet", position));
-			
+			int type = furthestUsedPlanet + rand.nextInt(SMALL_PLANET_TYPES / SMALL_PLANETS) + 1;
+			group.add(world.createEntity("SmallPlanet", position, type));
+			furthestUsedPlanet = type;
 		}
 		
 		for (int i = 0; i < BIG_STARS; i++) {

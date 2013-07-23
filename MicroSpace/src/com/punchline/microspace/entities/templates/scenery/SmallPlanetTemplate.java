@@ -1,7 +1,5 @@
 package com.punchline.microspace.entities.templates.scenery;
 
-import java.util.Random;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -16,12 +14,9 @@ import com.punchline.javalib.entities.components.render.Animation;
 import com.punchline.javalib.entities.components.render.Renderable;
 
 public class SmallPlanetTemplate implements EntityTemplate {
-
-	private static Random rand = new Random();
 	
 	private static final int SHEET_COLUMNS = 6;
 	private static final int SHEET_ROWS = 1;
-	private static final int FRAMES = 6;
 	private static final int FRAMES_WIDTH = 144;
 	private static final int FRAMES_HEIGHT = 25;
 	
@@ -41,15 +36,15 @@ public class SmallPlanetTemplate implements EntityTemplate {
 		Entity e = new Entity("", "Scenery", "SmallPlanet");
 		
 		Vector2 position = (Vector2)args[0];
+		Integer type = (Integer)args[1];
 		
-		Renderable sprite = new Animation(sheetTexture, framesRegion, SHEET_COLUMNS, SHEET_ROWS, 1f) {
-			public int frame = rand.nextInt(FRAMES);
-			
+		Animation sprite = new Animation(sheetTexture, framesRegion, SHEET_COLUMNS, SHEET_ROWS, 1f) {			
 			public void draw(SpriteBatch spriteBatch, float deltaSeconds) {
-				super.setStateTime(frame);
-				super.draw(spriteBatch, 0);
+				super.draw(spriteBatch, 0); //Never animate
 			}
 		};
+		
+		sprite.setStateTime(type); //Stay at this frame.
 		
 		e.addComponent(Renderable.class, sprite);
 		
