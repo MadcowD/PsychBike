@@ -2,17 +2,13 @@ package com.punchline.microspace;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL10;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.punchline.javalib.utils.SoundManager;
 import com.punchline.javalib.utils.Convert;
-import com.punchline.microspace.entities.SpaceWorld;
 import com.punchline.microspace.screens.GameplayScreen;
 
 public class MicroSpace extends Game {
-	private OrthographicCamera camera;
-	private SpriteBatch batch;
 	
 	@Override
 	public void create() {
@@ -21,20 +17,24 @@ public class MicroSpace extends Game {
 		Gdx.graphics.setTitle("Micro Space");
 		Gdx.graphics.setDisplayMode(800, 400, false);
 		
-		float w = Gdx.graphics.getWidth();
-		float h = Gdx.graphics.getHeight();
-		
-		camera = new OrthographicCamera();
-		camera.setToOrtho(false, w, h);
-		
-		batch = new SpriteBatch();
-		
-		setScreen(new GameplayScreen(camera));
+		setScreen(new GameplayScreen(this));
+	}
+	
+	
+
+	/**
+	 * {@inheritDoc}
+	 * Disposes of the previous screen.
+	 */
+	@Override
+	public void setScreen(Screen screen) {
+		Screen oldScreen = getScreen();
+		super.setScreen(screen);
+		oldScreen.dispose();
 	}
 
 	@Override
 	public void dispose() {
-		batch.dispose();
 		getScreen().dispose();
 		SoundManager.dispose();
 	}
@@ -48,14 +48,14 @@ public class MicroSpace extends Game {
 	}
 
 	@Override
-	public void resize(int width, int height) {
+	public void resize(int width, int height) { 
+		getScreen().resize(width, height); 
 	}
 
 	@Override
-	public void pause() {
-	}
+	public void pause() { }
 
 	@Override
-	public void resume() {
-	}
+	public void resume() { }
+	
 }
