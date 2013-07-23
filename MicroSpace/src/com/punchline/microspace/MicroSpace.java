@@ -19,6 +19,9 @@ public class MicroSpace implements ApplicationListener {
 	public void create() {
 		Convert.init(8);
 		
+		Gdx.graphics.setTitle("Micro Space");
+		Gdx.graphics.setDisplayMode(800, 400, false);
+		
 		float w = Convert.pixelsToMeters(Gdx.graphics.getWidth());
 		float h = Convert.pixelsToMeters(Gdx.graphics.getHeight());
 		
