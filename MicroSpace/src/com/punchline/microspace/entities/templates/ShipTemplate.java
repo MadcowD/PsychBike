@@ -26,7 +26,7 @@ public class ShipTemplate implements EntityTemplate {
 		
 		BodyDef def = new BodyDef();
 		def.type = BodyType.DynamicBody;
-		def.position.set(new Vector2(20, 75));
+		def.position.set(new Vector2(30, 20));
 		
 		CircleShape circle = new CircleShape();
 		circle.setRadius(6f);

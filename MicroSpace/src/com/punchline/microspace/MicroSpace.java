@@ -5,6 +5,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.punchline.javalib.utils.SoundManager;
+import com.punchline.javalib.utils.Units;
 import com.punchline.microspace.entities.SpaceWorld;
 
 public class MicroSpace implements ApplicationListener {
@@ -14,9 +16,11 @@ public class MicroSpace implements ApplicationListener {
 	private SpaceWorld world;
 	
 	@Override
-	public void create() {		
-		float w = Gdx.graphics.getWidth();
-		float h = Gdx.graphics.getHeight();
+	public void create() {
+		Units.setPixelsPerMeter(8);
+		
+		float w = (float)Gdx.graphics.getWidth() / Units.getPixelsPerMeter();
+		float h = (float)Gdx.graphics.getHeight() / Units.getPixelsPerMeter();
 		
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, w, h);
@@ -29,6 +33,8 @@ public class MicroSpace implements ApplicationListener {
 	@Override
 	public void dispose() {
 		batch.dispose();
+		world.dispose();
+		SoundManager.dispose();
 	}
 
 	@Override
