@@ -44,7 +44,7 @@ public class BigPlanetTemplate implements EntityTemplate {
 		Vector2 position = (Vector2)args[0];
 		
 		Renderable sprite = new Animation(sheetTexture, framesRegion, SHEET_COLUMNS, SHEET_ROWS, 1f) {
-			public int frame = rand.nextInt(FRAMES + 1);
+			public int frame = rand.nextInt(FRAMES);
 			
 			public void draw(SpriteBatch spriteBatch, float deltaSeconds) {
 				super.setStateTime(frame);
