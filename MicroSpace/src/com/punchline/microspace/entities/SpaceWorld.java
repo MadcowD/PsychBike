@@ -11,8 +11,19 @@ public class SpaceWorld extends EntityWorld {
 	public SpaceWorld(Camera camera) {
 		super(camera, Vector2.Zero, true);
 		
-		debugView.enabled = true; //TODO: Remember to disable this...
+		debugView.enabled = true;
+		debugView.visible = true; //TODO: Remember to disable this...
 	}
+
+	
+	
+	@Override
+	public void process() {
+		// TODO Auto-generated method stub
+		super.process();
+	}
+
+
 
 	@Override
 	protected void positionCamera() {
