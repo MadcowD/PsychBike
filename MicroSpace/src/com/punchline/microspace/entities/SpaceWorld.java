@@ -3,8 +3,7 @@ package com.punchline.microspace.entities;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.math.Vector2;
 import com.punchline.javalib.entities.EntityWorld;
-import com.punchline.microspace.entities.systems.RotationSystem;
-import com.punchline.microspace.entities.templates.ShipTemplate;
+import com.punchline.microspace.entities.templates.scenery.BigPlanetTemplate;
 
 public class SpaceWorld extends EntityWorld {
 
@@ -15,28 +14,22 @@ public class SpaceWorld extends EntityWorld {
 	}
 
 	@Override
-	protected void buildSystems() {
-		systems.addSystem(new RotationSystem());
-		
-		
+	protected void buildSystems() {		
 		super.buildSystems();
 	}
 
 	@Override
 	protected void buildTemplates() {
-		addTemplate("Ship", new ShipTemplate());
-		
 		super.buildTemplates();
+		
+		addTemplate("BigPlanet", new BigPlanetTemplate());
 	}
 
 	@Override
 	protected void buildEntities() {
-	
-		createEntity("Ship");
-		
 		super.buildEntities();
+		
+		createEntity("BigPlanet", new Vector2(50, 25));
 	}
-
-	
 	
 }
