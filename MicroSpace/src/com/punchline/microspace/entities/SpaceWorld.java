@@ -9,7 +9,6 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.punchline.javalib.entities.EntityWorld;
 import com.punchline.javalib.entities.systems.generic.CameraMovementSystem;
-import com.punchline.javalib.utils.Convert;
 import com.punchline.microspace.entities.templates.projectiles.BulletTemplate;
 import com.punchline.microspace.entities.templates.scenery.BigPlanetTemplate;
 import com.punchline.microspace.entities.templates.scenery.BigStarTemplate;
