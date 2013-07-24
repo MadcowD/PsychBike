@@ -1,24 +1,24 @@
 package com.punchline.microspace.screens;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.punchline.javalib.BaseGame;
 import com.punchline.microspace.entities.SpaceWorld;
 
 public class GameplayScreen implements Screen {
 
-	Game game;
+	BaseGame game;
 	SpaceWorld world;
 	OrthographicCamera camera;
 	
-	public GameplayScreen(Game game) {
+	public GameplayScreen(BaseGame game) {
 		this.game = game;
 		
 		camera = new OrthographicCamera();
 		resizeCamera();
 		
-		world = new SpaceWorld(camera);
+		world = new SpaceWorld(game.getInput(), camera);
 	}
 
 	private void resizeCamera() {
