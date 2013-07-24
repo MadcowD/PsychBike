@@ -1,6 +1,7 @@
 package com.punchline.microspace.entities;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Buttons;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.math.Rectangle;
@@ -8,6 +9,8 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.punchline.javalib.entities.EntityWorld;
 import com.punchline.javalib.entities.systems.generic.CameraMovementSystem;
+import com.punchline.javalib.utils.Convert;
+import com.punchline.microspace.entities.templates.projectiles.BulletTemplate;
 import com.punchline.microspace.entities.templates.scenery.BigPlanetTemplate;
 import com.punchline.microspace.entities.templates.scenery.BigStarTemplate;
 import com.punchline.microspace.entities.templates.scenery.SmallPlanetTemplate;
@@ -29,6 +32,15 @@ public class SpaceWorld extends EntityWorld {
 	@Override
 	public void process() {
 		super.process();
+		
+		if(Gdx.input.isButtonPressed(Buttons.LEFT)){
+			createEntity("Bullet", "red",
+					new Vector2(camera.position.x,camera.position.y)
+						.add(new Vector2(Gdx.input.getX()-Gdx.graphics.getWidth()/2f, Gdx.graphics.getHeight()/2f -Gdx.input.getY())),
+					new Vector2(200,0),
+					null,
+					0f);
+		}
 	}
 
 	@Override
@@ -60,6 +72,9 @@ public class SpaceWorld extends EntityWorld {
 	@Override
 	protected void buildTemplates() {
 		super.buildTemplates();
+		
+		//Projectiles
+		addTemplate("Bullet", new BulletTemplate());
 		
 		//Scenery
 		addTemplate("BigPlanet", new BigPlanetTemplate());
