@@ -32,8 +32,9 @@ public class SmallPlanetTemplate implements EntityTemplate {
 	 * Makes a SmallPlanet entity.
 	 */
 	@Override
-	public Entity buildEntity(EntityWorld world, Object... args) {
-		Entity e = new Entity("", "Scenery", "SmallPlanet");
+	public Entity buildEntity(Entity e, EntityWorld world, Object... args) {
+		
+		e.init("", "Scenery", "SmallPlanet");
 		
 		Vector2 position = (Vector2)args[0];
 		Integer type = (Integer)args[1];
