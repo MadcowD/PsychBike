@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="8" tileheight="8">
+ <tileset firstgid="1" name="tiles" tilewidth="8" tileheight="8">
+  <image source="../MicroSpace-android/assets/data/Textures/tiles.png" width="240" height="144"/>
+ </tileset>
+ <layer name="underlayer" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt0bENACAMA8HQw/7LMBwtygCJQHfNt5YcAQAA0G+m8oY9uhdw80eNlQoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAfw6kmgGt
+  </data>
+ </layer>
+ <layer name="Tile Layer 1" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt2LsuRFEYBeBzVHgBjyCh9gi8iMq1cKkJErVEr3JthjeQKFSS6XUqPIV14hQzx0QiMZvi+5KVfWZP969i7+yqAn7DYV1VB/XX/VF7jMdKZr2arCXryUabwb1jfRSzmVlvJdvJTrKb3LXfvfa/G30U85BZXyWXyUVy3WZw71wff+K0Hl4b97ooontuNGdEv519XwfFPWbmU1mXktlkcmK4H+f5+L1krm/Jfv3Zx3z2brPOZT3L+jyQ5vdMcpLs6WMsXn/Yx0LypI8imj6Ws04ni8l7507lflVW957bzHzU/Yq/M+p+daSboryX/C/d95Je59t7SVneSwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA+M4HqixMWA==
+  </data>
+ </layer>
+</map>
