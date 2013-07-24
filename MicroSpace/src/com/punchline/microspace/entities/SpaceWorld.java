@@ -50,7 +50,7 @@ public class SpaceWorld extends EntityWorld {
 		super.buildSystems();
 		
 		//Input
-		systems.addSystem(new CameraMovementSystem(camera, getBounds()));
+		systems.addSystem(new CameraMovementSystem(input, camera, getBounds()));
 		
 	}
 
