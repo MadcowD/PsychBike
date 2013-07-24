@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.punchline.javalib.BaseGame;
 import com.punchline.javalib.states.screens.SplashScreen;
 import com.punchline.javalib.utils.Convert;
-import com.punchline.microspace.screens.GameplayScreen;
+import com.punchline.microspace.screens.MicroMainMenuScreen;
 
 public class MicroSpace extends BaseGame {
 	
@@ -21,7 +21,7 @@ public class MicroSpace extends BaseGame {
 		
 		super.create();
 		
-		setScreen(new SplashScreen(this, Gdx.files.internal("data/Textures/splash.png"), new GameplayScreen(this), 1.25f, 4f, 1.25f));
+		setScreen(new SplashScreen(this, Gdx.files.internal("data/Textures/splash.png"), new MicroMainMenuScreen(this, Gdx.files.internal("data/Skin/uiskin.json")), 1.25f, 4f, 1.25f));
 	}
 	
 	@Override
