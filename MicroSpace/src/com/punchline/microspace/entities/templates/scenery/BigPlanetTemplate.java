@@ -33,9 +33,9 @@ public class BigPlanetTemplate implements EntityTemplate {
 	 * @param args args[0] = Vector2 position.
 	 */
 	@Override
-	public Entity buildEntity(EntityWorld world, Object... args) {
+	public Entity buildEntity(Entity e, EntityWorld world, Object... args) {
 		
-		Entity e = new Entity("", "Scenery", "BigPlanet");
+		e.init("", "Scenery", "BigPlanet");
 		
 		//Retrieve args
 		Vector2 position = (Vector2)args[0];

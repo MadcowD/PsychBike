@@ -31,8 +31,8 @@ public class BigStarTemplate implements EntityTemplate {
 	}
 	
 	@Override
-	public Entity buildEntity(EntityWorld world, Object... args) {
-		Entity e = new Entity("", "Scenery", "BigStar");
+	public Entity buildEntity(Entity e, EntityWorld world, Object... args) {
+		e.init("", "Scenery", "BigStar");
 		
 		Vector2 position = (Vector2)args[0];
 		
