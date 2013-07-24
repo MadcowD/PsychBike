@@ -1,12 +1,13 @@
 package com.punchline.microspace.entities;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.punchline.javalib.entities.EntityWorld;
-import com.punchline.microspace.entities.systems.CameraMovementSystem;
+import com.punchline.javalib.entities.systems.generic.CameraMovementSystem;
 import com.punchline.microspace.entities.templates.scenery.BigPlanetTemplate;
 import com.punchline.microspace.entities.templates.scenery.BigStarTemplate;
 import com.punchline.microspace.entities.templates.scenery.SmallPlanetTemplate;
@@ -15,8 +16,8 @@ import com.punchline.microspace.entities.templates.scenery.StarFieldTemplate;
 
 public class SpaceWorld extends EntityWorld {
 	
-	public SpaceWorld(Camera camera) {
-		super(camera, Vector2.Zero, true);
+	public SpaceWorld(InputMultiplexer input, Camera camera) {
+		super(input, camera, Vector2.Zero, true);
 		
 		debugView.enabled = true;
 		debugView.visible = true; //TODO: Remember to disable this...
@@ -49,7 +50,7 @@ public class SpaceWorld extends EntityWorld {
 		super.buildSystems();
 		
 		//Input
-		systems.addSystem(new CameraMovementSystem(camera, getBounds()));
+		systems.addSystem(new CameraMovementSystem(input, camera, getBounds()));
 		
 	}
 
