@@ -34,7 +34,6 @@ public class BigPlanetTemplate implements EntityTemplate {
 	 */
 	@Override
 	public Entity buildEntity(Entity e, EntityWorld world, Object... args) {
-		
 		e.init("", "Scenery", "BigPlanet");
 		
 		//Retrieve args
