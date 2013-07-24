@@ -1,6 +1,7 @@
 package com.punchline.microspace;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
 import com.punchline.javalib.BaseGame;
 import com.punchline.javalib.states.screens.SplashScreen;
 import com.punchline.javalib.utils.Convert;
@@ -15,6 +16,8 @@ public class MicroSpace extends BaseGame {
 		title = "Micro Space";
 		
 		landscapeMode = true;
+		
+		cursorTexture = new Texture(Gdx.files.internal("data/Textures/cursor.png"));
 		
 		super.create();
 		
