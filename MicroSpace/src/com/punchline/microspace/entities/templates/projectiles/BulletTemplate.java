@@ -11,8 +11,8 @@ import com.punchline.javalib.entities.ComponentManager;
 import com.punchline.javalib.entities.Entity;
 import com.punchline.javalib.entities.EntityTemplate;
 import com.punchline.javalib.entities.EntityWorld;
-import com.punchline.javalib.entities.components.Bullet;
-import com.punchline.javalib.entities.components.Health;
+import com.punchline.javalib.entities.components.generic.Bullet;
+import com.punchline.javalib.entities.components.generic.Health;
 import com.punchline.javalib.entities.components.physical.Collidable;
 import com.punchline.javalib.entities.components.physical.Particle;
 import com.punchline.javalib.entities.components.render.Renderable;
@@ -94,7 +94,7 @@ public class BulletTemplate implements EntityTemplate {
 						if(victim.hasComponent(Health.class))
 						{
 							Health h = victim.getComponent();
-							h.setHealth(h.getHealth()-b.getDamage());
+							h.drain(b.getDamage());
 						}
 						
 						container.delete();
