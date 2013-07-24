@@ -31,12 +31,12 @@ public class BulletTemplate implements EntityTemplate {
 	 * Constructs the bullet template for use with bullets.
 	 */
 	public BulletTemplate(){
-		bulletTex = new Texture(Gdx.files.internal("data/assets/Textures/bulletSprites.png"));
+		bulletTex = new Texture(Gdx.files.internal("data/Textures/bulletSprites.png"));
 		bulletRect = new TextureRegion[]{
-			new TextureRegion(bulletTex, 0, 1, 2, 1), //Blue
-			new TextureRegion(bulletTex, 0, 0, 2, 1), //Red
-			new TextureRegion(bulletTex, 2, 0, 2, 1), //Yellow
-			new TextureRegion(bulletTex, 2, 1, 2, 1), //Purple
+			new TextureRegion(bulletTex, 0, -1, 2, 1), //Blue
+			new TextureRegion(bulletTex, 0, -2, 2, 1), //Red
+			new TextureRegion(bulletTex, 2, -2, 2, 1), //Yellow
+			new TextureRegion(bulletTex, 2, -1, 2, 1), //Purple
 			new TextureRegion(bulletTex, 0, 2, 4, 2)  //Big
 		};
 	}
@@ -45,6 +45,7 @@ public class BulletTemplate implements EntityTemplate {
 	/** {@inheritDoc}
 	 * @see com.punchline.javalib.entities.EntityTemplate#buildEntity(com.punchline.javalib.entities.Entity, com.punchline.javalib.entities.EntityWorld, java.lang.Object[])
 	 */
+	@SuppressWarnings("unused")
 	@Override
 	public Entity buildEntity(Entity e, EntityWorld world, Object... args) {
 		e.init("", "Bullets", "Projectiles");
@@ -60,8 +61,7 @@ public class BulletTemplate implements EntityTemplate {
 		float damage = (Float)args[4];
 	
 		
-		
-		
+
 		//Particle
 		Particle p = e.addComponent(new Particle(e, position, rotation));
 		p.setLinearVelocity(linearVelocity);
