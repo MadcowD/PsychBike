@@ -17,7 +17,7 @@ import com.punchline.microspace.entities.templates.scenery.StarFieldTemplate;
 public class SpaceWorld extends EntityWorld {
 	
 	public SpaceWorld(InputMultiplexer input, Camera camera) {
-		super(input, camera, Vector2.Zero, true);
+		super(input, camera, new Vector2(0, 0), true);
 		
 		debugView.enabled = true;
 		debugView.visible = true; //TODO: Remember to disable this...
