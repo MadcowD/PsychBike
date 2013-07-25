@@ -7,6 +7,12 @@ import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.physics.box2d.Body;
+import com.badlogic.gdx.physics.box2d.BodyDef;
+import com.badlogic.gdx.physics.box2d.Fixture;
+import com.badlogic.gdx.physics.box2d.FixtureDef;
+import com.badlogic.gdx.physics.box2d.PolygonShape;
+import com.badlogic.gdx.physics.box2d.Shape;
 import com.punchline.javalib.entities.EntityWorld;
 import com.punchline.javalib.entities.systems.generic.CameraMovementSystem;
 import com.punchline.microspace.Worlds;
@@ -24,6 +30,8 @@ public class SpaceWorld extends EntityWorld {
 		
 		debugView.enabled = true;
 		debugView.visible = true; //TODO: Remember to disable this...
+		
+		
 		
 		Worlds.worlds.add(this);
 	}
@@ -92,7 +100,18 @@ public class SpaceWorld extends EntityWorld {
 	@Override
 	protected void buildEntities() {
 		super.buildEntities();
+		BodyDef bd = new BodyDef();
+		bd.angle = 0f;
+		bd.type = BodyDef.BodyType.DynamicBody;
+		FixtureDef f = new FixtureDef();
+		PolygonShape s = new PolygonShape();
+		s.setAsBox(10f, 10f);
+		f.shape = s;
 		
+		Body b = physicsWorld.createBody(bd);
+		
+		b.createFixture(s,1f);
+		b.setTransform(new Vector2(0,0), 0f);
 		createEntityGroup("StarField");
 	}
 	
