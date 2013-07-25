@@ -32,8 +32,6 @@ public class SpaceWorld extends EntityWorld {
 		debugView.enabled = true;
 		debugView.visible = true; //TODO: Remember to disable this...
 		
-		
-		
 		Worlds.worlds.add(this);
 	}
 

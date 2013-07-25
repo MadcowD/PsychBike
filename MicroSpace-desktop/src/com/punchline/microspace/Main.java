@@ -9,6 +9,7 @@ public class Main {
 		cfg.useGL20 = false;
 		cfg.resizable = false;
 		
-		new LwjglApplication(new MicroSpace(), cfg); 
+		LwjglApplication a = new LwjglApplication(new MicroSpace(), cfg); 
+		a.setLogLevel(3);
 	}
 }
