@@ -89,7 +89,7 @@ public class MainMenuScreen extends MenuScreen {
 	 * Called when the Settings button is pressed.
 	 */
 	private void onSettingsPressed() {
-		
+		game.setScreen(new SettingsScreen(game));
 	}
 	
 	/**

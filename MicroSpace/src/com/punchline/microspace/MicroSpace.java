@@ -1,10 +1,12 @@
 package com.punchline.microspace;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.Texture;
 import com.punchline.javalib.BaseGame;
 import com.punchline.javalib.states.screens.SplashScreen;
 import com.punchline.javalib.utils.Convert;
+import com.punchline.javalib.utils.SoundManager;
 import com.punchline.microspace.screens.MainMenuScreen;
 
 public class MicroSpace extends BaseGame {
@@ -25,6 +27,14 @@ public class MicroSpace extends BaseGame {
 	}
 	
 	@Override
-	protected void loadSounds() { }
+	protected void loadSounds() { 
+		Preferences pref = Gdx.app.getPreferences("settings");
+		
+		float soundVol = pref.getBoolean("Sound", true) ? 1f : 0f;
+		float musicVol = pref.getBoolean("Music", true) ? 1f : 0f;
+		
+		SoundManager.setSoundVolume(soundVol);
+		SoundManager.setMusicVolume(musicVol);
+	}
 	
 }
