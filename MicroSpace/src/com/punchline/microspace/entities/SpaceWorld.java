@@ -105,18 +105,6 @@ public class SpaceWorld extends EntityWorld {
 	@Override
 	protected void buildEntities() {
 		super.buildEntities();
-		BodyDef bd = new BodyDef();
-		bd.angle = 0f;
-		bd.type = BodyDef.BodyType.DynamicBody;
-		FixtureDef f = new FixtureDef();
-		PolygonShape s = new PolygonShape();
-		s.setAsBox(10f, 10f);
-		f.shape = s;
-		
-		Body b = physicsWorld.createBody(bd);
-		
-		b.createFixture(s,1f);
-		b.setTransform(new Vector2(0,0), 0f);
 		createEntityGroup("StarField");
 		
 		Vector2 pos = new Vector2(20, 5);
