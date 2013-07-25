@@ -16,6 +16,7 @@ import com.badlogic.gdx.physics.box2d.Shape;
 import com.punchline.javalib.entities.EntityWorld;
 import com.punchline.javalib.entities.systems.generic.CameraMovementSystem;
 import com.punchline.microspace.Worlds;
+import com.punchline.microspace.entities.templates.AsteroidTemplate;
 import com.punchline.microspace.entities.templates.projectiles.BulletTemplate;
 import com.punchline.microspace.entities.templates.scenery.BigPlanetTemplate;
 import com.punchline.microspace.entities.templates.scenery.BigStarTemplate;
@@ -91,6 +92,10 @@ public class SpaceWorld extends EntityWorld {
 		addTemplate("SmallPlanet", new SmallPlanetTemplate());
 		addTemplate("BigStar", new BigStarTemplate());
 		addTemplate("SmallStar", new SmallStarTemplate());
+		
+		//Entities
+		addTemplate("Asteroid", new AsteroidTemplate());
+		
 		addGroupTemplate("StarField", new StarFieldTemplate());
 	}
 
@@ -113,6 +118,12 @@ public class SpaceWorld extends EntityWorld {
 		b.createFixture(s,1f);
 		b.setTransform(new Vector2(0,0), 0f);
 		createEntityGroup("StarField");
+		
+		Vector2 pos = new Vector2(20, 5);
+		Vector2 velocity = new Vector2(0, 0);
+		
+		createEntity("Asteroid", 2, pos, velocity);
+		
 	}
 	
 }

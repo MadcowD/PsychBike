@@ -24,7 +24,6 @@ public class PauseMenuScreen extends MenuScreen {
 		super.initialize();
 		
 		Button playButton = new TextButton("Resume", skin);
-		Button settingsButton = new TextButton("Settings", skin);
 		Button quitButton = new TextButton("Back to Menu", skin);
 		
 		//TODO: Add buttons events.
@@ -35,17 +34,6 @@ public class PauseMenuScreen extends MenuScreen {
 				super.touchUp(event, x, y, pointer, button);
 				
 				onPlayGamePressed();
-			}
-			
-		});
-		
-		settingsButton.addListener(new ClickListener() {
-			
-			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				super.touchUp(event, x, y, pointer, button);
-				
-				onSettingsPressed();
 			}
 			
 		});
@@ -63,8 +51,6 @@ public class PauseMenuScreen extends MenuScreen {
 		
 		window.add(playButton);
 		window.row();
-		window.add(settingsButton);
-		window.row();
 		window.add(quitButton);
 		window.row();
 		
@@ -75,13 +61,6 @@ public class PauseMenuScreen extends MenuScreen {
 	 */
 	private void onPlayGamePressed() {
 		game.setScreen(gameplayScreen, false);
-	}
-	
-	/**
-	 * Called when the Settings button is pressed.
-	 */
-	private void onSettingsPressed() {
-		
 	}
 	
 	/**
