@@ -1,12 +1,12 @@
-package com.punchline.microspace.entities.templates;
+package com.punchline.microspace.entities;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef;
-import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
+import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.punchline.javalib.entities.Entity;
 import com.punchline.javalib.entities.EntityTemplate;
@@ -18,59 +18,58 @@ import com.punchline.javalib.entities.components.physical.Collidable;
 import com.punchline.javalib.entities.components.render.Renderable;
 import com.punchline.javalib.entities.components.render.Sprite;
 
-public class MookTemplate implements EntityTemplate {
+public class PlayerTemplate implements EntityTemplate {
 
-	private final static float BODY_RADIUS = 4f;
+	private static final float BODY_RADIUS = 8f;
+	private static final float PLAYER_POS_X = 600f;
+	
 	
 	private Texture shipsTexture;
 	private TextureRegion leftRegion;
 	private TextureRegion rightRegion;
 	
-	public MookTemplate() {
+	public PlayerTemplate() {
+		shipsTexture = new Texture(Gdx.files.internal("data/Textures/playerships.png"));
 		
-		shipsTexture = new Texture(Gdx.files.internal("data/Textures/mookShips.png"));
-		
-		leftRegion = new TextureRegion(shipsTexture, 0, 0, 8, 8);
-		rightRegion = new TextureRegion(shipsTexture, 8, 0, 8, 8);
-		
+		leftRegion = new TextureRegion(shipsTexture, 0, 0, 16, 16);
+		rightRegion = new TextureRegion(shipsTexture, 16, 0, 16, 16);
 	}
 	
 	@Override
 	public Entity buildEntity(Entity e, EntityWorld world, Object... args) {
-		String group = (String) args[0];
-		Vector2 position = (Vector2) args[1];
+		String group = (String)args[0];
 		
+		Vector2 pos = new Vector2();
 		Sprite s = new Sprite();
 		
-		BodyDef bodyDef = new BodyDef();
-		bodyDef.type = BodyType.DynamicBody;
-		bodyDef.position.set(position);
-		
-		if (group.equals("leftTeam")) {
-			s = new Sprite(shipsTexture, leftRegion);
-			bodyDef.linearVelocity.set(50f, 0);
-		} else if (group.equals("rightTeam")) {
-			s = new Sprite(shipsTexture, rightRegion);
-			bodyDef.angle = (float)Math.PI;
-			bodyDef.linearVelocity.set(-50f, 0);
-		}
+		BodyDef bd = new BodyDef();
+		bd.type = BodyType.DynamicBody;
 		
 		CircleShape circle = new CircleShape();
 		circle.setRadius(BODY_RADIUS);
 		
-		FixtureDef fixtureDef = new FixtureDef();
-		fixtureDef.shape = circle;
+		FixtureDef fd = new FixtureDef();
+		fd.shape = circle;
 		
-		Body b = new Body(world, e, bodyDef, fixtureDef);
+		if (group.equals("leftTeam")) {
+			pos.x = -PLAYER_POS_X;
+			s = new Sprite(shipsTexture, leftRegion);
+		} else if (group.equals("rightTeam")) {
+			pos.x = PLAYER_POS_X;
+			s = new Sprite(shipsTexture, rightRegion);
+			bd.angle = (float)Math.PI;
+		}
 		
-		e.addComponent(Collidable.class, GenericCollisionEvents.damageVictim());
+		bd.position.set(pos);
+		
+		Body b  = new Body(world, e, bd, fd);
 		
 		e.addComponent(Renderable.class, s);
 		e.addComponent(b);
-		
-		e.addComponent(Health.class, new Health(e, world, 1f));
+		e.addComponent(new Health(e, world, 10));
+		e.addComponent(Collidable.class, GenericCollisionEvents.damageVictim());
 		
 		return e;
 	}
-	
+
 }

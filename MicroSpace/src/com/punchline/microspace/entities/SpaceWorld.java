@@ -1,7 +1,6 @@
 package com.punchline.microspace.entities;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input.Buttons;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.math.Rectangle;
@@ -39,15 +38,6 @@ public class SpaceWorld extends EntityWorld {
 	@Override
 	public void process() {
 		super.process();
-		
-		if(Gdx.input.isButtonPressed(Buttons.LEFT)){
-			createEntity("Bullet", "red",
-					new Vector2(camera.position.x,camera.position.y)
-						.add(new Vector2(Gdx.input.getX()-Gdx.graphics.getWidth()/2f, Gdx.graphics.getHeight()/2f -Gdx.input.getY())),
-					new Vector2(200,0),
-					null,
-					1f);
-		}
 	}
 
 	@Override
@@ -55,7 +45,7 @@ public class SpaceWorld extends EntityWorld {
 		return new Rectangle(
 				-Gdx.graphics.getWidth(), 
 				-Gdx.graphics.getHeight() / 2, 
-				Gdx.graphics.getWidth() *2, 
+				Gdx.graphics.getWidth() * 2, 
 				Gdx.graphics.getHeight());
 	}
 
@@ -98,6 +88,7 @@ public class SpaceWorld extends EntityWorld {
 		addTemplate("BaseShip", new BaseShipTemplate());
 		
 		//Entities
+		addTemplate("Player", new PlayerTemplate());
 		addTemplate("Asteroid", new AsteroidTemplate());
 		addTemplate("Mook", new MookTemplate());
 	}
@@ -112,6 +103,8 @@ public class SpaceWorld extends EntityWorld {
 		
 		//BUILD BASES
 		createEntity("BaseShip", "leftTeam", new Vector2(-700, 0));
+		
+		createEntity("Player", "leftTeam");
 	}
 	
 }

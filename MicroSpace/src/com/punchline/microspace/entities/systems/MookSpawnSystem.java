@@ -1,12 +1,14 @@
 package com.punchline.microspace.entities.systems;
 
+import com.badlogic.gdx.math.Vector2;
 import com.punchline.javalib.entities.Entity;
 import com.punchline.javalib.entities.components.physical.Transform;
 import com.punchline.javalib.entities.systems.TypeSystem;
 
 public class MookSpawnSystem extends TypeSystem {
 
-	private static final float SPAWN_DELAY = 1;
+	private static final float SPAWN_DELAY = 5;
+	private static final float BASE_OFFSET = 50f;
 	
 	private float elapsed = 0f;
 	
@@ -37,7 +39,15 @@ public class MookSpawnSystem extends TypeSystem {
 		
 			Transform t = e.getComponent();
 			
-			world.createEntity("Mook", e.getGroup(), t.getPosition());
+			Vector2 pos = t.getPosition();
+			
+			if (e.getGroup().equals("leftTeam")) {
+				pos.x += BASE_OFFSET; 
+			} else if (e.getGroup().equals("rightTeam")) {
+				pos.x -= BASE_OFFSET;
+			}
+			
+			world.createEntity("Mook", e.getGroup(), pos);
 			
 		}
 	}
