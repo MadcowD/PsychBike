@@ -11,7 +11,9 @@ import com.punchline.javalib.entities.EntityWorld;
 import com.punchline.javalib.entities.systems.generic.CameraMovementSystem;
 import com.punchline.microspace.Worlds;
 import com.punchline.microspace.entities.systems.AsteroidSpawnSystem;
+import com.punchline.microspace.entities.systems.MookSpawnSystem;
 import com.punchline.microspace.entities.templates.AsteroidTemplate;
+import com.punchline.microspace.entities.templates.MookTemplate;
 import com.punchline.microspace.entities.templates.projectiles.BulletTemplate;
 import com.punchline.microspace.entities.templates.scenery.BigPlanetTemplate;
 import com.punchline.microspace.entities.templates.scenery.BigStarTemplate;
@@ -71,6 +73,7 @@ public class SpaceWorld extends EntityWorld {
 		
 		//Spawning
 		systems.addSystem(new AsteroidSpawnSystem());
+		systems.addSystem(new MookSpawnSystem());
 	}
 
 	/**
@@ -96,6 +99,7 @@ public class SpaceWorld extends EntityWorld {
 		
 		//Entities
 		addTemplate("Asteroid", new AsteroidTemplate());
+		addTemplate("Mook", new MookTemplate());
 	}
 
 	/**
