@@ -39,7 +39,7 @@ public class GameplayScreen extends InputScreen {
 	}
 
 	private void onPaused() {
-		game.setScreen(new PauseMenuScreen(game, this));
+		game.setScreen(new PauseMenuScreen(game, this), false);
 	}
 	
 	@Override
