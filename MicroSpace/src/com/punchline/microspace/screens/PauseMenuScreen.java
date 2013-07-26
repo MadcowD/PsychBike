@@ -60,14 +60,14 @@ public class PauseMenuScreen extends MenuScreen {
 	 * Called when the Play Game button is pressed.
 	 */
 	private void onPlayGamePressed() {
-		game.setScreen(gameplayScreen, false);
+		game.setScreen(gameplayScreen);
 	}
 	
 	/**
 	 * Called when the Quit button is pressed.
 	 */
 	private void onQuitPressed() {
-		game.setScreen(new MainMenuScreen(game));
+		game.setScreen(game.getMainMenu());
 	}
 	
 }
