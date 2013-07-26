@@ -13,7 +13,7 @@ public class MicroSpace extends BaseGame {
 	
 	@Override
 	public void create() {
-		Convert.init(8);
+		Convert.init(1);
 		
 		title = "Micro Space";
 		

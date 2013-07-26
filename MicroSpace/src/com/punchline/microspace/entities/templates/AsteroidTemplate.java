@@ -22,9 +22,9 @@ import com.punchline.javalib.utils.Convert;
 
 public class AsteroidTemplate implements EntityTemplate {
 	
-	private static final float SMALL_RADIUS = 4f;
-	private static final float MEDIUM_RADIUS = 8f;
-	private static final float BIG_RADIUS = 16f;
+	private static final float SMALL_RADIUS = 2f;
+	private static final float MEDIUM_RADIUS = 4f;
+	private static final float BIG_RADIUS = 8f;
 	
 	private static Random rand = new Random();
 	
