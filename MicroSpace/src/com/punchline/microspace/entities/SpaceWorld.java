@@ -10,6 +10,7 @@ import com.badlogic.gdx.math.Vector3;
 import com.punchline.javalib.entities.EntityWorld;
 import com.punchline.javalib.entities.systems.generic.CameraMovementSystem;
 import com.punchline.microspace.Worlds;
+import com.punchline.microspace.entities.systems.AsteroidSpawnSystem;
 import com.punchline.microspace.entities.templates.AsteroidTemplate;
 import com.punchline.microspace.entities.templates.projectiles.BulletTemplate;
 import com.punchline.microspace.entities.templates.scenery.BigPlanetTemplate;
@@ -42,7 +43,7 @@ public class SpaceWorld extends EntityWorld {
 						.add(new Vector2(Gdx.input.getX()-Gdx.graphics.getWidth()/2f, Gdx.graphics.getHeight()/2f -Gdx.input.getY())),
 					new Vector2(200,0),
 					null,
-					0f);
+					1f);
 		}
 	}
 
@@ -67,6 +68,8 @@ public class SpaceWorld extends EntityWorld {
 		//Input
 		systems.addSystem(new CameraMovementSystem(input, camera, getBounds()));
 		
+		//Spawning
+		systems.addSystem(new AsteroidSpawnSystem());
 	}
 
 	/**
@@ -84,11 +87,10 @@ public class SpaceWorld extends EntityWorld {
 		addTemplate("SmallPlanet", new SmallPlanetTemplate());
 		addTemplate("BigStar", new BigStarTemplate());
 		addTemplate("SmallStar", new SmallStarTemplate());
+		addGroupTemplate("StarField", new StarFieldTemplate());
 		
 		//Entities
 		addTemplate("Asteroid", new AsteroidTemplate());
-		
-		addGroupTemplate("StarField", new StarFieldTemplate());
 	}
 
 	/**
@@ -97,13 +99,9 @@ public class SpaceWorld extends EntityWorld {
 	@Override
 	protected void buildEntities() {
 		super.buildEntities();
-		createEntityGroup("StarField");
+		createEntityGroup("StarField");	
 		
-		Vector2 pos = new Vector2(20, 5);
-		Vector2 velocity = new Vector2(0, 0);
-		
-		createEntity("Asteroid", 2, pos, velocity);
-		
+		createEntity("Asteroid", 2, new Vector2(0, 0), new Vector2(0, 0));
 	}
 	
 }

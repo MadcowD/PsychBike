@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef;
+import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.punchline.javalib.entities.Entity;
@@ -22,9 +23,9 @@ import com.punchline.javalib.utils.Convert;
 
 public class AsteroidTemplate implements EntityTemplate {
 	
-	private static final float SMALL_RADIUS = 4f;
-	private static final float MEDIUM_RADIUS = 8f;
-	private static final float BIG_RADIUS = 16f;
+	private static final float SMALL_RADIUS = 2f;
+	private static final float MEDIUM_RADIUS = 4f;
+	private static final float BIG_RADIUS = 8f;
 	
 	private static Random rand = new Random();
 	
@@ -55,7 +56,7 @@ public class AsteroidTemplate implements EntityTemplate {
 				new TextureRegion(asteroidsTexture, 0, 8, 16, 16),
 				new TextureRegion(asteroidsTexture, 16, 8, 16, 16),
 				new TextureRegion(asteroidsTexture, 32, 8, 16, 16),
-				new TextureRegion(asteroidsTexture, 48, 0, 16, 16)
+				new TextureRegion(asteroidsTexture, 48, 8, 16, 16)
 		};
 		
 	}
@@ -69,6 +70,7 @@ public class AsteroidTemplate implements EntityTemplate {
 		e.init("", "Asteroids", "Asteroid");
 		
 		BodyDef bodyDef = new BodyDef();
+		bodyDef.type = BodyType.DynamicBody;
 		bodyDef.position.set(position);
 		bodyDef.linearVelocity.set(velocity);
 		
