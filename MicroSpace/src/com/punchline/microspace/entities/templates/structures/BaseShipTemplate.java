@@ -39,7 +39,7 @@ public class BaseShipTemplate implements EntityTemplate {
 	 */
 	@Override
 	public Entity buildEntity(Entity e, EntityWorld world, Object... args) {
-		e.init("baseShip", (String)args[0], "Structures"); //Builds the base ship with a team. (args[0])
+		e.init("", (String)args[0], "Base"); //Builds the base ship with a team. (args[0])
 		
 		Vector2 position = (Vector2)args[1];
 		
@@ -66,7 +66,7 @@ public class BaseShipTemplate implements EntityTemplate {
 		
 		
 		//HEALTH
-		Health h = e.addComponent(new Health(e, world, 5000f));
+		e.addComponent(new Health(e, world, 5000f));
 		//TODO: Add the loose game call back if team is player team
 		
 		

@@ -1,7 +1,6 @@
 package com.punchline.microspace.entities;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input.Buttons;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.math.Rectangle;
@@ -11,7 +10,10 @@ import com.punchline.javalib.entities.EntityWorld;
 import com.punchline.javalib.entities.systems.generic.CameraMovementSystem;
 import com.punchline.microspace.Worlds;
 import com.punchline.microspace.entities.systems.AsteroidSpawnSystem;
+import com.punchline.microspace.entities.systems.MookSpawnSystem;
+import com.punchline.microspace.entities.systems.PlayerControlSystem;
 import com.punchline.microspace.entities.templates.AsteroidTemplate;
+import com.punchline.microspace.entities.templates.MookTemplate;
 import com.punchline.microspace.entities.templates.projectiles.BulletTemplate;
 import com.punchline.microspace.entities.templates.scenery.BigPlanetTemplate;
 import com.punchline.microspace.entities.templates.scenery.BigStarTemplate;
@@ -40,15 +42,6 @@ public class SpaceWorld extends EntityWorld {
 	@Override
 	public void process() {
 		super.process();
-		
-		if(Gdx.input.isButtonPressed(Buttons.LEFT)){
-			createEntity("Bullet", "red",
-					new Vector2(camera.position.x,camera.position.y)
-						.add(new Vector2(Gdx.input.getX()-Gdx.graphics.getWidth()/2f, Gdx.graphics.getHeight()/2f -Gdx.input.getY())),
-					new Vector2(200,0),
-					null,
-					1f);
-		}
 	}
 
 	@Override
@@ -56,7 +49,7 @@ public class SpaceWorld extends EntityWorld {
 		return new Rectangle(
 				-Gdx.graphics.getWidth(), 
 				-Gdx.graphics.getHeight() / 2, 
-				Gdx.graphics.getWidth() *2, 
+				Gdx.graphics.getWidth() * 2, 
 				Gdx.graphics.getHeight());
 	}
 
@@ -71,9 +64,11 @@ public class SpaceWorld extends EntityWorld {
 		
 		//Input
 		systems.addSystem(new CameraMovementSystem(input, camera, getBounds()));
+		systems.addSystem(new PlayerControlSystem(input));
 		
 		//Spawning
 		systems.addSystem(new AsteroidSpawnSystem());
+		systems.addSystem(new MookSpawnSystem());
 	}
 
 	/**
@@ -101,7 +96,9 @@ public class SpaceWorld extends EntityWorld {
 		addTemplate("BaseBarracks", new BaseBarracksTemplate());
 		
 		//Entities
+		addTemplate("Player", new PlayerTemplate());
 		addTemplate("Asteroid", new AsteroidTemplate());
+		addTemplate("Mook", new MookTemplate());
 	}
 
 	/**
@@ -112,13 +109,13 @@ public class SpaceWorld extends EntityWorld {
 		super.buildEntities();
 		createEntityGroup("StarField");	
 		
-		createEntity("Asteroid", 2, new Vector2(0, 0), new Vector2(0, 0));
-		
 		//BUILD BASES
 		createEntity("BaseShip", "leftTeam", new Vector2(-700, 0));
 		createEntity("BaseMine", "leftTeam", new Vector2(-660, 100));
 		createEntity("BaseTurret", "leftTeam", new Vector2(-660, -100));
 		createEntity("BaseBarracks", "leftTeam", new Vector2(-720, -100));
+		
+		createEntity("Player", "leftTeam");
 	}
 	
 }

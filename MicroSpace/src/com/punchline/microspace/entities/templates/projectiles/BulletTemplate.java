@@ -95,7 +95,7 @@ public class BulletTemplate implements EntityTemplate {
 					Bullet b = container.getComponent();
 					
 					//If the bullet hits the firer, continue firing the bullet.
-					if(victim == b.getFirer()) 
+					if(victim.getGroup().equals(b.getFirer().getGroup())) 
 						return 1;
 					
 					else{
