@@ -52,6 +52,15 @@ public class BulletTemplate implements EntityTemplate {
 		
 		//ARGS
 		String type = (String)args[0];
+		TextureRegion region = bulletRect[0]; //blue
+		if(type.equalsIgnoreCase("red"))
+			region = bulletRect[1];
+		else if(type.equalsIgnoreCase("yellow"))
+			region = bulletRect[2];
+		else if(type.equalsIgnoreCase("purple"))
+			region = bulletRect[3];
+		else if(type.equalsIgnoreCase("big"))
+			region = bulletRect[4];
 		Vector2 position = (Vector2)args[1];
 		
 		Vector2 linearVelocity = (Vector2)args[2];
@@ -63,7 +72,7 @@ public class BulletTemplate implements EntityTemplate {
 		
 
 		//Particle
-		Particle p = e.addComponent(new Particle(e, position, rotation));
+		Particle p = e.addComponent(new Particle(e, position, rotation, new Vector2(region.getRegionWidth()/2f, region.getRegionHeight()/2f)));
 		p.setLinearVelocity(linearVelocity);
 		
 
@@ -103,20 +112,8 @@ public class BulletTemplate implements EntityTemplate {
 					}
 				}
 			});
-		
-		
-		
 		//Sprite TODO: Consider sprite pooling.
-		if(type.equalsIgnoreCase("blue"))
-			e.addComponent(Renderable.class, new Sprite(bulletTex, bulletRect[0]));
-		else if(type.equalsIgnoreCase("red"))
-			e.addComponent(Renderable.class, new Sprite(bulletTex, bulletRect[1]));
-		else if(type.equalsIgnoreCase("yellow"))
-			e.addComponent(Renderable.class, new Sprite(bulletTex, bulletRect[2]));
-		else if(type.equalsIgnoreCase("purple"))
-			e.addComponent(Renderable.class, new Sprite(bulletTex, bulletRect[3]));
-		else if(type.equalsIgnoreCase("big"))
-			e.addComponent(Renderable.class, new Sprite(bulletTex, bulletRect[4]));
+		e.addComponent(Renderable.class, new Sprite(bulletTex, bulletRect[0]));
 		
 		return e;
 	}

@@ -18,6 +18,7 @@ import com.punchline.microspace.entities.templates.scenery.BigStarTemplate;
 import com.punchline.microspace.entities.templates.scenery.SmallPlanetTemplate;
 import com.punchline.microspace.entities.templates.scenery.SmallStarTemplate;
 import com.punchline.microspace.entities.templates.scenery.StarFieldTemplate;
+import com.punchline.microspace.entities.templates.structures.BaseShipTemplate;
 
 public class SpaceWorld extends EntityWorld {
 	
@@ -52,7 +53,7 @@ public class SpaceWorld extends EntityWorld {
 		return new Rectangle(
 				-Gdx.graphics.getWidth(), 
 				-Gdx.graphics.getHeight() / 2, 
-				Gdx.graphics.getWidth() * 2, 
+				Gdx.graphics.getWidth() *2, 
 				Gdx.graphics.getHeight());
 	}
 
@@ -89,6 +90,10 @@ public class SpaceWorld extends EntityWorld {
 		addTemplate("SmallStar", new SmallStarTemplate());
 		addGroupTemplate("StarField", new StarFieldTemplate());
 		
+		
+		//STRUCTURES
+		addTemplate("BaseShip", new BaseShipTemplate());
+		
 		//Entities
 		addTemplate("Asteroid", new AsteroidTemplate());
 	}
@@ -102,6 +107,9 @@ public class SpaceWorld extends EntityWorld {
 		createEntityGroup("StarField");	
 		
 		createEntity("Asteroid", 2, new Vector2(0, 0), new Vector2(0, 0));
+		
+		//BUILD BASES
+		createEntity("BaseShip", "leftTeam", new Vector2(-700, 0));
 	}
 	
 }

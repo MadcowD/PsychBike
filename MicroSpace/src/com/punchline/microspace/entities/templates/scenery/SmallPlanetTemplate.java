@@ -36,6 +36,7 @@ public class SmallPlanetTemplate implements EntityTemplate {
 		
 		e.init("", "Scenery", "SmallPlanet");
 		
+		
 		Vector2 position = (Vector2)args[0];
 		Integer type = (Integer)args[1];
 		
