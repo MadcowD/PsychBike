@@ -73,6 +73,7 @@ public class AsteroidTemplate implements EntityTemplate {
 		bodyDef.type = BodyType.DynamicBody;
 		bodyDef.position.set(position);
 		bodyDef.linearVelocity.set(velocity);
+		bodyDef.angularVelocity = (rand.nextFloat() - 0.5f) * 10;
 		
 		FixtureDef fixtureDef = new FixtureDef();
 		CircleShape shape = new CircleShape();

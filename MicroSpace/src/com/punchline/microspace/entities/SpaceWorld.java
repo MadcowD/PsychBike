@@ -106,8 +106,6 @@ public class SpaceWorld extends EntityWorld {
 		super.buildEntities();
 		createEntityGroup("StarField");	
 		
-		createEntity("Asteroid", 2, new Vector2(0, 0), new Vector2(0, 0));
-		
 		//BUILD BASES
 		createEntity("BaseShip", "leftTeam", new Vector2(-700, 0));
 	}

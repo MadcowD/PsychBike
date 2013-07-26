@@ -59,12 +59,12 @@ public class AsteroidSpawnSystem extends EntitySystem {
 			
 			if (side == 0) {
 				//Come from the top
-				pos.y = Gdx.graphics.getHeight() / 4 + PADDING;
+				pos.y = Gdx.graphics.getHeight() / 2 + PADDING;
 				
 				velocity.y = -speed;
 			} else if (side == 1) {
 				//Come from the bottom
-				pos.y = -Gdx.graphics.getHeight() / 4 -PADDING;
+				pos.y = -Gdx.graphics.getHeight() / 2 - PADDING;
 				
 				velocity.y = speed;
 			}
