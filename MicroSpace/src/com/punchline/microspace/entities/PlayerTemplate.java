@@ -39,6 +39,8 @@ public class PlayerTemplate implements EntityTemplate {
 	public Entity buildEntity(Entity e, EntityWorld world, Object... args) {
 		String group = (String)args[0];
 		
+		e.init("", group, "Player");
+		
 		Vector2 pos = new Vector2();
 		Sprite s = new Sprite();
 		
