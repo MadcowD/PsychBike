@@ -67,9 +67,7 @@ public class BaseShipTemplate implements EntityTemplate {
 		
 		//HEALTH
 		e.addComponent(new Health(e, world, 5000f));
-		//TODO: Add the loose game call back if team is player team
-		
-		
+
 		return e;
 	}
 

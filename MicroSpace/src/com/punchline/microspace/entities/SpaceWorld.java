@@ -115,7 +115,6 @@ public class SpaceWorld extends EntityWorld {
 		createEntityGroup("Base", "rightTeam");
 		
 		createEntity("Player", "leftTeam");
-		
 	}
 	
 }

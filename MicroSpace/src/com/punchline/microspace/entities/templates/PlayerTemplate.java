@@ -9,6 +9,7 @@ import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.punchline.javalib.entities.Entity;
+import com.punchline.javalib.entities.Entity.EntityEventCallback;
 import com.punchline.javalib.entities.EntityTemplate;
 import com.punchline.javalib.entities.EntityWorld;
 import com.punchline.javalib.entities.GenericCollisionEvents;
@@ -72,10 +73,23 @@ public class PlayerTemplate implements EntityTemplate {
 		e.addComponent(Renderable.class, s);
 		e.addComponent(b);
 		
-		Health h = new GenericHealth(e, world, 10);
+		Health h = new GenericHealth(e, world, 10f);
 		
 		e.addComponent(Health.class, h);
 		e.addComponent(Collidable.class, GenericCollisionEvents.damageVictim());
+		
+		e.OnDelete = new EntityEventCallback(){
+			EntityWorld world;
+			public EntityEventCallback init(EntityWorld world){
+				this.world = world;
+				return this;
+			}
+			
+			@Override
+			public void invoke(Entity e) {
+				world.createEntity("Player", e.getGroup());
+			}
+		}.init(world);
 		
 		return e;
 	}
