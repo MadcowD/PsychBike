@@ -12,6 +12,7 @@ import com.punchline.microspace.Worlds;
 import com.punchline.microspace.entities.systems.AsteroidSpawnSystem;
 import com.punchline.microspace.entities.systems.PlayerControlSystem;
 import com.punchline.microspace.entities.templates.AsteroidTemplate;
+import com.punchline.microspace.entities.templates.ExplosionTemplate;
 import com.punchline.microspace.entities.templates.MookTemplate;
 import com.punchline.microspace.entities.templates.PlayerTemplate;
 import com.punchline.microspace.entities.templates.projectiles.BulletTemplate;
@@ -89,6 +90,8 @@ public class SpaceWorld extends EntityWorld {
 		addTemplate("SmallStar", new SmallStarTemplate());
 		addGroupTemplate("StarField", new StarFieldTemplate());
 		
+		//Effects
+		addTemplate("Explosion", new ExplosionTemplate());
 		
 		//STRUCTURES
 		addTemplate("BaseShip", new BaseShipTemplate());

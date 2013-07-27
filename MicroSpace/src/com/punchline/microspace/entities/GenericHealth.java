@@ -3,6 +3,7 @@ package com.punchline.microspace.entities;
 import com.punchline.javalib.entities.Entity;
 import com.punchline.javalib.entities.EntityWorld;
 import com.punchline.javalib.entities.components.generic.Health;
+import com.punchline.javalib.entities.components.physical.Transform;
 import com.punchline.javalib.utils.SoundManager;
 
 public class GenericHealth extends Health {
@@ -17,6 +18,7 @@ public class GenericHealth extends Health {
 				SoundManager.playSound("explosion");
 				
 				//TODO make explosion
+				world.createEntity("Explosion", owner.<Transform>getComponent().getPosition());
 			}
 			
 		};
