@@ -13,6 +13,7 @@ import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.punchline.javalib.entities.Entity;
 import com.punchline.javalib.entities.EntityTemplate;
 import com.punchline.javalib.entities.EntityWorld;
+import com.punchline.javalib.entities.components.generic.EntitySpawner;
 import com.punchline.javalib.entities.components.generic.Health;
 import com.punchline.javalib.entities.components.physical.Body;
 import com.punchline.javalib.entities.components.render.Renderable;
@@ -39,7 +40,7 @@ public class BaseBarracksTemplate implements EntityTemplate {
 	 */
 	@Override
 	public Entity buildEntity(Entity e, EntityWorld world, Object... args) {
-		e.init("baseBarracks", (String)args[0], "Spawner"); //Builds the base ship with a team. (args[0])
+		e.init("baseBarracks", (String)args[0], "Structures"); //Builds the base ship with a team. (args[0])
 		
 		Vector2 position = (Vector2)args[1];
 		
@@ -68,6 +69,8 @@ public class BaseBarracksTemplate implements EntityTemplate {
 		//HEALTH
 		e.addComponent(new Health(e, world, 1500f));
 		
+		//EntitySpawner
+		e.addComponent(new EntitySpawner("Mook", false, 5, e.getGroup(), b.getPosition()));
 		
 		return e;
 	}
