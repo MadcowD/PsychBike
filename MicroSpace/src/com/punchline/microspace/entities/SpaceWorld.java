@@ -10,7 +10,6 @@ import com.punchline.javalib.entities.EntityWorld;
 import com.punchline.javalib.entities.systems.generic.TrackingCameraSystem;
 import com.punchline.microspace.Worlds;
 import com.punchline.microspace.entities.systems.AsteroidSpawnSystem;
-import com.punchline.microspace.entities.systems.MookSpawnSystem;
 import com.punchline.microspace.entities.systems.PlayerControlSystem;
 import com.punchline.microspace.entities.templates.AsteroidTemplate;
 import com.punchline.microspace.entities.templates.MookTemplate;
@@ -70,7 +69,6 @@ public class SpaceWorld extends EntityWorld {
 		
 		//Spawning
 		systems.addSystem(new AsteroidSpawnSystem());
-		systems.addSystem(new MookSpawnSystem());
 	}
 
 	/**
