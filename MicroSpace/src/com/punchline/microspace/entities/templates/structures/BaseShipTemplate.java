@@ -49,7 +49,7 @@ public class BaseShipTemplate implements EntityTemplate {
 		
 		
 		BodyDef bodyDef = new BodyDef();
-		bodyDef.type = BodyType.DynamicBody;
+		bodyDef.type = BodyType.StaticBody;
 		bodyDef.position.set(position);
 		
 		FixtureDef fd = new FixtureDef();

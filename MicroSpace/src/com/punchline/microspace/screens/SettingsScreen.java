@@ -30,13 +30,15 @@ public class SettingsScreen extends MenuScreen {
 			
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				Preferences pref = Gdx.app.getPreferences("settings");
 				
-				float soundVol = pref.getBoolean("Sound", true) ? 1f : 0f;
-				float musicVol = pref.getBoolean("Music", true) ? 1f : 0f;
+				float soundVol = sounds.isChecked() ? 1f : 0f;
+				float musicVol = music.isChecked() ? 1f : 0f;
 				
 				SoundManager.setSoundVolume(soundVol);
 				SoundManager.setMusicVolume(musicVol);
+				
+				SoundManager.playSound("select");
+				
 			}	
 			
 		};
@@ -50,6 +52,7 @@ public class SettingsScreen extends MenuScreen {
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				game.setScreen(new MainMenuScreen(game));
+				SoundManager.playSound("back");
 			}	
 			
 		});

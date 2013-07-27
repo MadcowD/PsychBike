@@ -17,6 +17,7 @@ import com.punchline.javalib.entities.components.physical.Body;
 import com.punchline.javalib.entities.components.physical.Collidable;
 import com.punchline.javalib.entities.components.render.Renderable;
 import com.punchline.javalib.entities.components.render.Sprite;
+import com.punchline.microspace.entities.GenericHealth;
 
 public class MookTemplate implements EntityTemplate {
 
@@ -71,7 +72,7 @@ public class MookTemplate implements EntityTemplate {
 		e.addComponent(Renderable.class, s);
 		e.addComponent(b);
 		
-		e.addComponent(Health.class, new Health(e, world, 1f));
+		e.addComponent(Health.class, new GenericHealth(e, world, 1f));
 		
 		return e;
 	}

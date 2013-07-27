@@ -14,6 +14,7 @@ import com.punchline.microspace.entities.systems.MookSpawnSystem;
 import com.punchline.microspace.entities.systems.PlayerControlSystem;
 import com.punchline.microspace.entities.templates.AsteroidTemplate;
 import com.punchline.microspace.entities.templates.MookTemplate;
+import com.punchline.microspace.entities.templates.PlayerTemplate;
 import com.punchline.microspace.entities.templates.projectiles.BulletTemplate;
 import com.punchline.microspace.entities.templates.scenery.BigPlanetTemplate;
 import com.punchline.microspace.entities.templates.scenery.BigStarTemplate;

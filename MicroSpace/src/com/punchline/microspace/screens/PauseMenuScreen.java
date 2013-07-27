@@ -7,6 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.punchline.javalib.BaseGame;
 import com.punchline.javalib.states.screens.MenuScreen;
+import com.punchline.javalib.utils.SoundManager;
 
 public class PauseMenuScreen extends MenuScreen {
 
@@ -34,6 +35,8 @@ public class PauseMenuScreen extends MenuScreen {
 				super.touchUp(event, x, y, pointer, button);
 				
 				onPlayGamePressed();
+				
+				SoundManager.playSound("select");
 			}
 			
 		});
@@ -45,6 +48,8 @@ public class PauseMenuScreen extends MenuScreen {
 				super.touchUp(event, x, y, pointer, button);
 				
 				onQuitPressed();
+				
+				SoundManager.playSound("back");
 			}
 			
 		});

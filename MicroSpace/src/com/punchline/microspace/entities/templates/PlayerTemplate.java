@@ -1,4 +1,4 @@
-package com.punchline.microspace.entities;
+package com.punchline.microspace.entities.templates;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -17,6 +17,7 @@ import com.punchline.javalib.entities.components.physical.Body;
 import com.punchline.javalib.entities.components.physical.Collidable;
 import com.punchline.javalib.entities.components.render.Renderable;
 import com.punchline.javalib.entities.components.render.Sprite;
+import com.punchline.microspace.entities.GenericHealth;
 
 public class PlayerTemplate implements EntityTemplate {
 
@@ -70,7 +71,10 @@ public class PlayerTemplate implements EntityTemplate {
 		
 		e.addComponent(Renderable.class, s);
 		e.addComponent(b);
-		e.addComponent(new Health(e, world, 10));
+		
+		Health h = new GenericHealth(e, world, 10);
+		
+		e.addComponent(Health.class, h);
 		e.addComponent(Collidable.class, GenericCollisionEvents.damageVictim());
 		
 		return e;

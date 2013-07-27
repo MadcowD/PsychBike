@@ -35,6 +35,12 @@ public class MicroSpace extends BaseGame {
 		
 		SoundManager.setSoundVolume(soundVol);
 		SoundManager.setMusicVolume(musicVol);
+		
+		SoundManager.addSound("back", Gdx.files.internal("data/Sounds/back.wav"));
+		SoundManager.addSound("select", Gdx.files.internal("data/Sounds/select.wav"));
+		SoundManager.addSound("shot", Gdx.files.internal("data/Sounds/shot.wav"));
+		SoundManager.addSound("explosion", Gdx.files.internal("data/Sounds/explosion.wav"));
+		SoundManager.addSound("hit", Gdx.files.internal("data/Sounds/hit.wav"));
 	}
 	
 }

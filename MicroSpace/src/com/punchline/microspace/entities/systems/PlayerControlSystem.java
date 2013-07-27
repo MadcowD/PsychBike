@@ -7,6 +7,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.punchline.javalib.entities.Entity;
 import com.punchline.javalib.entities.components.physical.Body;
 import com.punchline.javalib.entities.systems.InputSystem;
+import com.punchline.javalib.utils.SoundManager;
 
 public class PlayerControlSystem extends InputSystem {
 
@@ -81,6 +82,7 @@ public class PlayerControlSystem extends InputSystem {
 					
 					world.createEntity("Bullet", "red", b.getPosition(), fireL, e, BULLET_DAMAGE);
 					elapsedShot = 0f;
+					SoundManager.playSound("shot", 0.5f);
 				}
 			}
 		}
