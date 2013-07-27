@@ -48,9 +48,9 @@ public class SpaceWorld extends EntityWorld {
 	@Override
 	public Rectangle getBounds() {
 		return new Rectangle(
-				-Gdx.graphics.getWidth(), 
+				-Gdx.graphics.getWidth() * 2, 
 				-Gdx.graphics.getHeight() / 2, 
-				Gdx.graphics.getWidth() * 2, 
+				Gdx.graphics.getWidth() * 4, 
 				Gdx.graphics.getHeight());
 	}
 

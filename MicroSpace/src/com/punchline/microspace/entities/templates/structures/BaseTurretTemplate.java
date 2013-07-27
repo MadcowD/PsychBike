@@ -67,8 +67,8 @@ public class BaseTurretTemplate implements EntityTemplate {
 		
 		
 		//HEALTH
-		e.addComponent(new Health(e, world, 1500f));
-		
+		Health h = e.addComponent(new Health(e, world, 1500f));
+		h.render = true;
 		
 		return e;
 	}

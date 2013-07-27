@@ -58,10 +58,10 @@ public class PlayerTemplate implements EntityTemplate {
 		fd.shape = circle;
 		
 		if (group.equals("leftTeam")) {
-			pos.x = -PLAYER_POS_X;
+			pos.x = -((world.getBounds().width/2f)-200);
 			s = new Sprite(shipsTexture, leftRegion);
 		} else if (group.equals("rightTeam")) {
-			pos.x = PLAYER_POS_X;
+			pos.x = (world.getBounds().width/2f)-200;
 			s = new Sprite(shipsTexture, rightRegion);
 			bd.angle = (float)Math.PI;
 		}

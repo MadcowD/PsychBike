@@ -31,27 +31,28 @@ public class BaseTemplate implements EntityGroupTemplate {
 		else
 			multiplier = 1;
 		
-		
+		float ww = world.getBounds().width/2f;
 		//BUILD BASE
 		
-		baseStructures.add(world.createEntity("BaseShip", team, new Vector2(700, 0).scl(multiplier)));
+		baseStructures.add(world.createEntity("BaseShip", team, new Vector2(ww-100, 0).scl(multiplier)));
 		
 		//set up turrets
-		baseStructures.add(world.createEntity("BaseTurret", team, new Vector2(570, -30).scl(multiplier))); 
-		baseStructures.add(world.createEntity("BaseTurret", team, new Vector2(570, 30).scl(multiplier))); 
-		baseStructures.add(world.createEntity("BaseTurret", team, new Vector2(510, -60).scl(multiplier))); 
-		baseStructures.add(world.createEntity("BaseTurret", team, new Vector2(510, 60).scl(multiplier))); 
-		baseStructures.add(world.createEntity("BaseTurret", team, new Vector2(510, -120).scl(multiplier))); 
-		baseStructures.add(world.createEntity("BaseTurret", team, new Vector2(510, 120).scl(multiplier))); 
+		baseStructures.add(world.createEntity("BaseTurret", team, new Vector2(ww - 230, -30).scl(multiplier))); 
+		baseStructures.add(world.createEntity("BaseTurret", team, new Vector2(ww - 230, 30).scl(multiplier))); 
+		baseStructures.add(world.createEntity("BaseTurret", team, new Vector2(ww - 290, -60).scl(multiplier))); 
+		baseStructures.add(world.createEntity("BaseTurret", team, new Vector2(ww - 290, 60).scl(multiplier))); 
+		baseStructures.add(world.createEntity("BaseTurret", team, new Vector2(ww - 290, -120).scl(multiplier))); 
+		baseStructures.add(world.createEntity("BaseTurret", team, new Vector2(ww - 290, 120).scl(multiplier))); 
 		
 		//set up barracks
-		baseStructures.add(world.createEntity("BaseBarracks", team, new Vector2(550, -90).scl(multiplier))); 
-		baseStructures.add(world.createEntity("BaseBarracks", team, new Vector2(550, 90).scl(multiplier))); 
+		baseStructures.add(world.createEntity("BaseBarracks", team, new Vector2(ww - 250, -90).scl(multiplier))); 
+		baseStructures.add(world.createEntity("BaseBarracks", team, new Vector2(ww - 250, 90).scl(multiplier))); 
 		
 		//set up mining rigs
-		baseStructures.add(world.createEntity("BaseMine", team, new Vector2(720, 110).scl(multiplier))); 
-		baseStructures.add(world.createEntity("BaseMine", team, new Vector2(690, -110).scl(multiplier))); 
+		baseStructures.add(world.createEntity("BaseMine", team, new Vector2(ww - 80, 110).scl(multiplier))); 
+		baseStructures.add(world.createEntity("BaseMine", team, new Vector2(ww - 110, -110).scl(multiplier))); 
 		
+		//rotate entities for respective sides
 		for(Entity e : baseStructures){
 			Body b = e.getComponent();
 			b.setRotation(b.getRotation() + (float)(Math.PI/2f + multiplier*Math.PI/2f));
