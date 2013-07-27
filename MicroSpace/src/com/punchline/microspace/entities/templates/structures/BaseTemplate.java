@@ -32,17 +32,27 @@ public class BaseTemplate implements EntityGroupTemplate {
 			multiplier = 1;
 		
 		float ww = world.getBounds().width/2f;
+		float wh = world.getBounds().width/2f;
 		//BUILD BASE
 		
 		baseStructures.add(world.createEntity("BaseShip", team, new Vector2(ww-100, 0).scl(multiplier)));
 		
-		//set up turrets
-		baseStructures.add(world.createEntity("BaseTurret", team, new Vector2(ww - 230, -30).scl(multiplier))); 
-		baseStructures.add(world.createEntity("BaseTurret", team, new Vector2(ww - 230, 30).scl(multiplier))); 
-		baseStructures.add(world.createEntity("BaseTurret", team, new Vector2(ww - 290, -60).scl(multiplier))); 
-		baseStructures.add(world.createEntity("BaseTurret", team, new Vector2(ww - 290, 60).scl(multiplier))); 
-		baseStructures.add(world.createEntity("BaseTurret", team, new Vector2(ww - 290, -120).scl(multiplier))); 
-		baseStructures.add(world.createEntity("BaseTurret", team, new Vector2(ww - 290, 120).scl(multiplier))); 
+		//Set up towers.
+			//T1
+			baseStructures.add(world.createEntity("BaseTurret", team, new Vector2(ww - 230, -30).scl(multiplier))); 
+			baseStructures.add(world.createEntity("BaseTurret", team, new Vector2(ww - 230, 30).scl(multiplier))); 
+			baseStructures.add(world.createEntity("BaseTurret", team, new Vector2(ww - 290, -60).scl(multiplier))); 
+			baseStructures.add(world.createEntity("BaseTurret", team, new Vector2(ww - 290, 60).scl(multiplier))); 
+			baseStructures.add(world.createEntity("BaseTurret", team, new Vector2(ww - 290, -120).scl(multiplier))); 
+			baseStructures.add(world.createEntity("BaseTurret", team, new Vector2(ww - 290, 120).scl(multiplier)));
+		
+			//T2
+			baseStructures.add(world.createEntity("BaseTurret", team, new Vector2(ww - 820, -45).scl(multiplier))); 
+			baseStructures.add(world.createEntity("BaseTurret", team, new Vector2(ww - 820, 45).scl(multiplier)));
+			
+			//T3
+			baseStructures.add(world.createEntity("BaseTurret", team, new Vector2(ww - 1220, -45).scl(multiplier))); 
+			baseStructures.add(world.createEntity("BaseTurret", team, new Vector2(ww - 1220, 45).scl(multiplier)));
 		
 		//set up barracks
 		baseStructures.add(world.createEntity("BaseBarracks", team, new Vector2(ww - 250, -90).scl(multiplier))); 
