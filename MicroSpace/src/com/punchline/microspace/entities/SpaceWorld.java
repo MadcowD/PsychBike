@@ -7,7 +7,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.punchline.javalib.entities.EntityWorld;
-import com.punchline.javalib.entities.systems.generic.CameraMovementSystem;
+import com.punchline.javalib.entities.systems.generic.TrackingCameraSystem;
 import com.punchline.microspace.Worlds;
 import com.punchline.microspace.entities.systems.AsteroidSpawnSystem;
 import com.punchline.microspace.entities.systems.MookSpawnSystem;
@@ -60,7 +60,7 @@ public class SpaceWorld extends EntityWorld {
 		super.buildSystems();
 		
 		//Input
-		systems.addSystem(new CameraMovementSystem(input, camera, getBounds()));
+		systems.addSystem(new TrackingCameraSystem("Player", camera, getBounds()));
 		systems.addSystem(new PlayerControlSystem(input));
 		
 		//Spawning
