@@ -18,12 +18,16 @@ import com.punchline.javalib.entities.components.physical.Body;
 import com.punchline.javalib.entities.components.render.Renderable;
 import com.punchline.javalib.entities.components.render.Sprite;
 import com.punchline.javalib.utils.BodyEditorLoader;
+import com.punchline.microspace.entities.GenericHealth;
 
 /**
  * @author William
  * @created Jul 26, 2013
  */
 public class BaseShipTemplate implements EntityTemplate {
+	
+	private static final int HEALTH = 30;
+	
 	private Texture shipTexture;
 	private TextureRegion shipRegion;
 	/**
@@ -66,7 +70,10 @@ public class BaseShipTemplate implements EntityTemplate {
 		
 		
 		//HEALTH
-		e.addComponent(new Health(e, world, 5000f));
+		
+		Health health = new GenericHealth(e, world, HEALTH);
+		health.render = true;
+		e.addComponent(Health.class, health);
 		//TODO: Add the loose game call back if team is player team
 		
 		

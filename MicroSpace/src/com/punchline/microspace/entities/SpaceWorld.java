@@ -5,7 +5,6 @@ import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.math.Vector3;
 import com.punchline.javalib.entities.EntityWorld;
 import com.punchline.javalib.entities.systems.generic.TrackingCameraSystem;
 import com.punchline.javalib.entities.systems.render.HealthRenderSystem;
@@ -56,9 +55,7 @@ public class SpaceWorld extends EntityWorld {
 	}
 
 	@Override
-	protected void positionCamera() {
-		camera.position.set(new Vector3(0, 0, 0));
-	}
+	protected void positionCamera() { }
 	
 	@Override
 	protected void buildSystems() {		
