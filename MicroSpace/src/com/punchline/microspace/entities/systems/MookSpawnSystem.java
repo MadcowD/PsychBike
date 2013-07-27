@@ -8,12 +8,12 @@ import com.punchline.javalib.entities.systems.TypeSystem;
 public class MookSpawnSystem extends TypeSystem {
 
 	private static final float SPAWN_DELAY = 5;
-	private static final float BASE_OFFSET = 50f;
+	private static final float BASE_OFFSET = 0f;
 	
 	private float elapsed = 0f;
 	
 	public MookSpawnSystem() {
-		super("Base");
+		super("Spawner");
 		// TODO Auto-generated constructor stub
 	}
 

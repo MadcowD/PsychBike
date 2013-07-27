@@ -39,7 +39,7 @@ public class BaseBarracksTemplate implements EntityTemplate {
 	 */
 	@Override
 	public Entity buildEntity(Entity e, EntityWorld world, Object... args) {
-		e.init("baseBarracks", (String)args[0], "Structures"); //Builds the base ship with a team. (args[0])
+		e.init("baseBarracks", (String)args[0], "Spawner"); //Builds the base ship with a team. (args[0])
 		
 		Vector2 position = (Vector2)args[1];
 		
