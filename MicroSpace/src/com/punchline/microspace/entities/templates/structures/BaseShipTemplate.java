@@ -95,7 +95,7 @@ public class BaseShipTemplate implements EntityTemplate {
 		};
 		
 		e.addComponent(Health.class, health);
-
+		float offset = group.equals("leftTeam") ? HORIZONTAL_OFFSET : -HORIZONTAL_OFFSET;
 		e.addComponent(new EntitySpawner("Mook", false, 5, e.getGroup(), b.getPosition().cpy().add(new Vector2(offset, 0))));
 		
 		
