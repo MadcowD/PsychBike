@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.punchline.javalib.BaseGame;
 import com.punchline.javalib.entities.EntityWorld;
 import com.punchline.javalib.states.InputScreen;
+import com.punchline.microspace.MicroGameOverInfo;
 import com.punchline.microspace.entities.SpaceWorld;
 
 /**
@@ -55,6 +56,12 @@ public class GameplayScreen extends InputScreen {
 	@Override
 	public void render(float delta) {
 		world.process();
+		
+		if (world.isGameOver()) {
+			MicroGameOverInfo info = (MicroGameOverInfo) world.getGameOverInfo();
+			
+			game.setScreen(new GameOverScreen(game, info));
+		}
 	}
 
 	@Override

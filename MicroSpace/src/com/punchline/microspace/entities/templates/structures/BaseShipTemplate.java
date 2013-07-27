@@ -13,17 +13,26 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.punchline.javalib.entities.Entity;
 import com.punchline.javalib.entities.EntityTemplate;
 import com.punchline.javalib.entities.EntityWorld;
+import com.punchline.javalib.entities.components.generic.EntitySpawner;
 import com.punchline.javalib.entities.components.generic.Health;
+import com.punchline.javalib.entities.components.generic.Health.HealthEventCallback;
 import com.punchline.javalib.entities.components.physical.Body;
 import com.punchline.javalib.entities.components.render.Renderable;
 import com.punchline.javalib.entities.components.render.Sprite;
 import com.punchline.javalib.utils.BodyEditorLoader;
+import com.punchline.javalib.utils.SoundManager;
+import com.punchline.microspace.MicroGameOverInfo;
+import com.punchline.microspace.entities.GenericHealth;
 
 /**
  * @author William
  * @created Jul 26, 2013
  */
 public class BaseShipTemplate implements EntityTemplate {
+	
+	private static final int HEALTH = 30;
+	private static final float HORIZONTAL_OFFSET = 50f;
+	
 	private Texture shipTexture;
 	private TextureRegion shipRegion;
 	/**
@@ -39,7 +48,8 @@ public class BaseShipTemplate implements EntityTemplate {
 	 */
 	@Override
 	public Entity buildEntity(Entity e, EntityWorld world, Object... args) {
-		e.init("", (String)args[0], "Base"); //Builds the base ship with a team. (args[0])
+		final String group = (String)args[0];
+		e.init("", group, "Base"); //Builds the base ship with a team. (args[0])
 		
 		Vector2 position = (Vector2)args[1];
 		
@@ -66,8 +76,29 @@ public class BaseShipTemplate implements EntityTemplate {
 		
 		
 		//HEALTH
-		e.addComponent(new Health(e, world, 5000f));
+		
+		Health health = new GenericHealth(e, world, HEALTH);
+		health.render = true;
+		health.onDeath = new HealthEventCallback() {
 
+			@Override
+			public void invoke(Entity owner, EntityWorld world) {
+				SoundManager.playSound("explosion");
+				
+				//TODO make badass explosion
+				
+				String winningTeam = group.equals("leftTeam") ? "rightTeam" : "leftTeam";
+				
+				world.setGameOverInfo(new MicroGameOverInfo(winningTeam));
+			}
+			
+		};
+		
+		e.addComponent(Health.class, health);
+
+		e.addComponent(new EntitySpawner("Mook", false, 5, e.getGroup(), b.getPosition().cpy().add(new Vector2(offset, 0))));
+		
+		
 		return e;
 	}
 

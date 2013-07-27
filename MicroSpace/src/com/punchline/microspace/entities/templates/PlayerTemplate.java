@@ -74,6 +74,7 @@ public class PlayerTemplate implements EntityTemplate {
 		e.addComponent(b);
 		
 		Health h = new GenericHealth(e, world, 10f);
+		h.render = true;
 		
 		e.addComponent(Health.class, h);
 		e.addComponent(Collidable.class, GenericCollisionEvents.damageVictim());
