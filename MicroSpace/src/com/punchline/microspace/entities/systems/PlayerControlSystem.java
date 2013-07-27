@@ -1,7 +1,9 @@
 package com.punchline.microspace.entities.systems;
 
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.punchline.javalib.entities.Entity;
@@ -21,13 +23,11 @@ public class PlayerControlSystem extends InputSystem {
 	private boolean movingDown = false;
 	
 	private float elapsedShot = 0f;
-	private boolean shootingLeft = false;
-	private boolean shootingRight = false;
-	private boolean shootingUp = false;
-	private boolean shootingDown = false;
+	private Vector2 aim;
 	
 	public PlayerControlSystem(InputMultiplexer input) {
 		super(input);
+		aim = new Vector2();
 	}
 
 	@Override
@@ -41,34 +41,12 @@ public class PlayerControlSystem extends InputSystem {
 	
 		Body b = e.getComponent();
 		
-		
-		elapsedShot += deltaSeconds();
-		
-		if (elapsedShot >= SHOT_DELAY) {	
-			Vector2 velocity = new Vector2();
-			
-			if (shootingLeft) {
-				velocity.x = -1f;
-			} else if (shootingRight) {
-				velocity.x = 1f;
-			}
-			
-			if (shootingUp) {
-				velocity.y = 1f;
-			} else if (shootingDown) {
-				velocity.y = -1f;
-			}
-			
-			if (!velocity.equals(new Vector2())) {
-				velocity.nor();
-				velocity.scl(BULLET_SPEED);
-				
-				world.createEntity("Bullet", "red", b.getPosition(), velocity, e, BULLET_DAMAGE);
-				elapsedShot = 0f;
-			}
-		}
-		
 		Vector2 velocity = new Vector2();
+		
+		aim.x = Gdx.input.getX() -Gdx.graphics.getWidth()/2f + world.getCamera().position.x;
+		aim.y= -Gdx.input.getY() +Gdx.graphics.getHeight()/2f + world.getCamera().position.y;
+		
+		Vector2 fireL = aim.cpy().sub(b.getPosition());
 		
 		if (movingLeft) {
 			velocity.x = -1f;
@@ -89,6 +67,26 @@ public class PlayerControlSystem extends InputSystem {
 		
 		if (!velocity.equals(Vector2.Zero))
 			b.setRotation((float)Math.toRadians(velocity.angle()));
+		else
+			b.setRotation((float)Math.toRadians(fireL.angle()));
+		
+		elapsedShot += deltaSeconds();
+		if(Gdx.input.isTouched()){
+			b.setRotation((float)Math.toRadians(fireL.angle()));
+			if (elapsedShot >= SHOT_DELAY) {	
+				b.setRotation((float)Math.toRadians(fireL.angle()));
+				fireL.angle();
+				
+				if (!fireL.equals(new Vector2())) {
+					fireL.nor();
+					fireL.scl(BULLET_SPEED);
+					
+					world.createEntity("Bullet", "red", b.getPosition(), fireL, e, BULLET_DAMAGE);
+					elapsedShot = 0f;
+				}
+			}
+		}
+		
 	}
 
 	@Override
@@ -110,26 +108,6 @@ public class PlayerControlSystem extends InputSystem {
 		
 		if (keycode == Keys.S){
 			movingDown = true;
-			return true;
-		}
-		
-		if (keycode == Keys.LEFT) {
-			shootingLeft = true;
-			return true;
-		}
-		
-		if (keycode == Keys.RIGHT) {
-			shootingRight = true;
-			return true;
-		}
-		
-		if (keycode == Keys.UP) {
-			shootingUp = true;
-			return true;
-		}
-		
-		if (keycode == Keys.DOWN) {
-			shootingDown = true;
 			return true;
 		}
 		
@@ -158,27 +136,6 @@ public class PlayerControlSystem extends InputSystem {
 			return true;
 		}
 		
-		if (keycode == Keys.LEFT) {
-			shootingLeft = false;
-			return true;
-		}
-		
-		if (keycode == Keys.RIGHT) {
-			shootingRight = false;
-			return true;
-		}
-		
-		if (keycode == Keys.UP) {
-			shootingUp = false;
-			return true;
-		}
-		
-		if (keycode == Keys.DOWN) {
-			shootingDown = false;
-			return true;
-		}
-		
 		return false;
 	}
-
 }
