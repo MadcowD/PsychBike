@@ -23,7 +23,6 @@ import com.punchline.microspace.entities.GenericHealth;
 public class PlayerTemplate implements EntityTemplate {
 
 	private static final float BODY_RADIUS = 8f;
-	private static final float PLAYER_POS_X = 600f;
 	
 	
 	private Texture shipsTexture;
