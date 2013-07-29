@@ -2,6 +2,7 @@ package com.punchline.microspace;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
+import com.punchline.javalib.utils.LogManager;
 
 public class Main {
 	public static void main(String[] args) {
@@ -10,6 +11,6 @@ public class Main {
 		cfg.resizable = false;
 		
 		LwjglApplication a = new LwjglApplication(new MicroSpace(), cfg); 
-		a.setLogLevel(3);
+		LogManager.init(a);
 	}
 }
