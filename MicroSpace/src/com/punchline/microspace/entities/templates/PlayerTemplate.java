@@ -67,7 +67,7 @@ public class PlayerTemplate implements EntityTemplate {
 			bd.angle = (float)Math.PI;
 		}
 		
-		bd.position.set(pos);
+		bd.position.set(Convert.pixelsToMeters(pos));
 		
 		Body b  = new Body(world, e, bd, fd);
 		

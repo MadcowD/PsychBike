@@ -32,11 +32,11 @@ public class BaseTemplate implements EntityGroupTemplate {
 		else
 			multiplier = 1;
 		
-		float ww = world.getBounds().width/2f;
+		float ww = Convert.metersToPixels(world.getBounds().width/2f);
 
 		//BUILD BASE
 		
-		baseStructures.add(world.createEntity("BaseShip", team, new Vector2(ww-100, 0).scl(multiplier)));
+		baseStructures.add(world.createEntity("BaseShip", team, Convert.pixelsToMeters(new Vector2(ww-100, 0).scl(multiplier))));
 		
 		//Set up towers.
 			//T1

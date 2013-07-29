@@ -6,6 +6,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.punchline.javalib.entities.Entity;
 import com.punchline.javalib.entities.systems.EntitySystem;
+import com.punchline.javalib.utils.Convert;
 
 public class AsteroidSpawnSystem extends EntitySystem {
 
@@ -69,7 +70,7 @@ public class AsteroidSpawnSystem extends EntitySystem {
 				velocity.y = speed;
 			}
 			
-			world.createEntity("Asteroid", size, pos, velocity);
+			world.createEntity("Asteroid", size, Convert.pixelsToMeters(pos), Convert.pixelsToMeters(velocity));
 		}
 	}
 

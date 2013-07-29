@@ -13,8 +13,8 @@ import com.punchline.javalib.utils.SoundManager;
 public class PlayerControlSystem extends InputSystem {
 
 	private static final float SHOT_DELAY = 0.25f;
-	private static final float PLAYER_SPEED = 70f;
-	private static final float BULLET_SPEED = 200f;
+	private static final float PLAYER_SPEED = Convert.pixelsToMeters(70f);
+	private static final float BULLET_SPEED = Convert.pixelsToMeters(200f);
 	private static final float BULLET_DAMAGE = 1f;
 	
 	private boolean movingLeft = false;

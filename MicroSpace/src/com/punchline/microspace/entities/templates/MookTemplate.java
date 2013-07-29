@@ -20,6 +20,7 @@ import com.punchline.microspace.entities.GenericHealth;
 public class MookTemplate implements EntityTemplate {
 
 	private final static float BODY_RADIUS = 4f;
+	private static final float SPEED = Convert.pixelsToMeters(50f);
 	
 	private Texture shipsTexture;
 	private TextureRegion leftRegion;
@@ -50,11 +51,11 @@ public class MookTemplate implements EntityTemplate {
 		
 		if (group.equals("leftTeam")) {
 			s = new Sprite(shipsTexture, leftRegion);
-			bodyDef.linearVelocity.set(50f, 0);
+			bodyDef.linearVelocity.set(SPEED, 0);
 		} else if (group.equals("rightTeam")) {
 			s = new Sprite(shipsTexture, rightRegion);
 			bodyDef.angle = (float)Math.PI;
-			bodyDef.linearVelocity.set(-50f, 0);
+			bodyDef.linearVelocity.set(-SPEED, 0);
 		}
 		
 		CircleShape circle = new CircleShape();
