@@ -59,15 +59,15 @@ public class PlayerTemplate implements EntityTemplate {
 		fd.shape = circle;
 		
 		if (group.equals("leftTeam")) {
-			pos.x = -((world.getBounds().width/2f)-200);
+			pos.x = -((world.getBounds().width/2f)-Convert.pixelsToMeters(200));
 			s = new Sprite(shipsTexture, leftRegion);
 		} else if (group.equals("rightTeam")) {
-			pos.x = (world.getBounds().width/2f)-200;
+			pos.x = (world.getBounds().width/2f)-Convert.pixelsToMeters(200);
 			s = new Sprite(shipsTexture, rightRegion);
 			bd.angle = (float)Math.PI;
 		}
 		
-		bd.position.set(Convert.pixelsToMeters(pos));
+		bd.position.set(pos);
 		
 		Body b  = new Body(world, e, bd, fd);
 		

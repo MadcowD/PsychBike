@@ -9,7 +9,6 @@ import com.punchline.javalib.entities.EntityWorld;
 import com.punchline.javalib.entities.systems.generic.TrackingCameraSystem;
 import com.punchline.javalib.entities.systems.render.HealthRenderSystem;
 import com.punchline.javalib.utils.Convert;
-import com.punchline.microspace.Worlds;
 import com.punchline.microspace.entities.systems.AsteroidSpawnSystem;
 import com.punchline.microspace.entities.systems.PlayerControlSystem;
 import com.punchline.microspace.entities.templates.AsteroidTemplate;
@@ -35,8 +34,6 @@ public class SpaceWorld extends EntityWorld {
 		
 		debugView.enabled = true;
 		debugView.visible = true; //TODO: Remember to disable this...
-		
-		Worlds.worlds.add(this);
 	}
 
 	/**

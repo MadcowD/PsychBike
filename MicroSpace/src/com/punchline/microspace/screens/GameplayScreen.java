@@ -70,10 +70,14 @@ public class GameplayScreen extends InputScreen {
 	}
 
 	@Override
-	public void show() { }
+	public void show() { 
+		world.resume();
+	}
 
 	@Override
-	public void hide() { }
+	public void hide() {
+		world.pause();
+	}
 
 	@Override
 	public void pause() { 

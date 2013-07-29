@@ -8,7 +8,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.punchline.javalib.BaseGame;
 import com.punchline.javalib.states.screens.MenuScreen;
 import com.punchline.javalib.utils.SoundManager;
-import com.punchline.microspace.Worlds;
 
 public class PauseMenuScreen extends MenuScreen {
 
@@ -73,7 +72,7 @@ public class PauseMenuScreen extends MenuScreen {
 	 * Called when the Quit button is pressed.
 	 */
 	private void onQuitPressed() {
-		Worlds.dispose();
+		gameplayScreen.dispose();
 		game.setScreen(new MainMenuScreen(game));
 	}
 	

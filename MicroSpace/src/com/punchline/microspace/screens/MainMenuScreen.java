@@ -8,7 +8,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.punchline.javalib.BaseGame;
 import com.punchline.javalib.states.screens.MenuScreen;
 import com.punchline.javalib.utils.SoundManager;
-import com.punchline.microspace.Worlds;
 
 /**
  * Base class for a game's Main Menu screen.
@@ -103,7 +102,6 @@ public class MainMenuScreen extends MenuScreen {
 	 * Called when the Quit button is pressed.
 	 */
 	private void onQuitPressed() {
-		Worlds.dispose(); //TODO Find another way
 		Gdx.app.exit();
 	}
 	

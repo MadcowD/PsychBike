@@ -91,6 +91,14 @@ public class PlayerControlSystem extends InputSystem {
 	}
 
 	@Override
+	public void pause() {
+		movingLeft = false;
+		movingRight = false;
+		movingUp = false;
+		movingDown = false;
+	}
+	
+	@Override
 	public boolean keyDown(int keycode) {
 		if (keycode == Keys.A) {
 			movingLeft = true;
