@@ -14,6 +14,7 @@ import com.punchline.javalib.entities.GenericCollisionEvents;
 import com.punchline.javalib.entities.components.physical.Body;
 import com.punchline.javalib.entities.components.render.Sprite;
 import com.punchline.javalib.entities.templates.EntityTemplate;
+import com.punchline.javalib.utils.Convert;
 import com.punchline.microspace.entities.GenericHealth;
 
 public class MookTemplate implements EntityTemplate {
@@ -57,7 +58,7 @@ public class MookTemplate implements EntityTemplate {
 		}
 		
 		CircleShape circle = new CircleShape();
-		circle.setRadius(BODY_RADIUS);
+		circle.setRadius(Convert.pixelsToMeters(BODY_RADIUS));
 		
 		FixtureDef fixtureDef = new FixtureDef();
 		fixtureDef.shape = circle;

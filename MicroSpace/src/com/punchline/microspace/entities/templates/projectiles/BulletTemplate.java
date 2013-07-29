@@ -16,7 +16,6 @@ import com.punchline.javalib.entities.components.physical.Collidable;
 import com.punchline.javalib.entities.components.physical.Particle;
 import com.punchline.javalib.entities.components.render.Sprite;
 import com.punchline.javalib.entities.templates.EntityTemplate;
-import com.punchline.javalib.utils.Convert;
 
 /**
  * @author William
@@ -63,7 +62,7 @@ public class BulletTemplate implements EntityTemplate {
 		Vector2 position = (Vector2)args[1];
 		
 		Vector2 linearVelocity = (Vector2)args[2];
-		float rotation = Convert.degreesToRadians(linearVelocity.angle());
+		float rotation = (float) Math.toRadians(linearVelocity.angle());
 		
 		Entity firer = (Entity)args[3];
 		float damage = (Float)args[4];

@@ -8,6 +8,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.punchline.javalib.entities.EntityWorld;
 import com.punchline.javalib.entities.systems.generic.TrackingCameraSystem;
 import com.punchline.javalib.entities.systems.render.HealthRenderSystem;
+import com.punchline.javalib.utils.Convert;
 import com.punchline.microspace.Worlds;
 import com.punchline.microspace.entities.systems.AsteroidSpawnSystem;
 import com.punchline.microspace.entities.systems.PlayerControlSystem;
@@ -48,11 +49,12 @@ public class SpaceWorld extends EntityWorld {
 
 	@Override
 	public Rectangle getBounds() {
-		return new Rectangle(
-				-Gdx.graphics.getWidth() * 2, 
-				-Gdx.graphics.getHeight() / 2, 
-				Gdx.graphics.getWidth() * 4, 
-				Gdx.graphics.getHeight());
+		return Convert.pixelsToMeters(
+				new Rectangle(
+					-Gdx.graphics.getWidth() * 2, 
+					-Gdx.graphics.getHeight() / 2, 
+					Gdx.graphics.getWidth() * 4, 
+					Gdx.graphics.getHeight()));
 	}
 
 	@Override

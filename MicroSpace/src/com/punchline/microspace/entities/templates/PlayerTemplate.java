@@ -18,6 +18,7 @@ import com.punchline.javalib.entities.components.physical.Transform;
 import com.punchline.javalib.entities.components.render.Sprite;
 import com.punchline.javalib.entities.templates.EntityCreationArgs;
 import com.punchline.javalib.entities.templates.EntityTemplate;
+import com.punchline.javalib.utils.Convert;
 import com.punchline.javalib.utils.SoundManager;
 import com.punchline.microspace.entities.GenericHealth;
 
@@ -52,7 +53,7 @@ public class PlayerTemplate implements EntityTemplate {
 		bd.type = BodyType.DynamicBody;
 		
 		CircleShape circle = new CircleShape();
-		circle.setRadius(BODY_RADIUS);
+		circle.setRadius(Convert.pixelsToMeters(BODY_RADIUS));
 		
 		FixtureDef fd = new FixtureDef();
 		fd.shape = circle;
