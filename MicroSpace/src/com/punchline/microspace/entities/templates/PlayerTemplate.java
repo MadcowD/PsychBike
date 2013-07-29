@@ -82,7 +82,7 @@ public class PlayerTemplate implements EntityTemplate {
 			public void invoke(Entity owner, EntityWorld world) {
 				SoundManager.playSound("explosion");
 				
-				world.createEntity("Explosion", ((Transform) owner.getComponent(Transform.class)).getPosition());
+				world.safelyCreateEntity("Explosion", ((Transform) owner.getComponent(Transform.class)).getPosition());
 				
 				world.safeCreate(new EntityCreationArgs("Player", false, owner.getGroup())); //respawn
 			}
