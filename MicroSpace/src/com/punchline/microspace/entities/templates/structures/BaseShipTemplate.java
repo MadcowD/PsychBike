@@ -19,6 +19,7 @@ import com.punchline.javalib.entities.components.physical.Body;
 import com.punchline.javalib.entities.components.render.Sprite;
 import com.punchline.javalib.entities.templates.EntityTemplate;
 import com.punchline.javalib.utils.BodyEditorLoader;
+import com.punchline.javalib.utils.Convert;
 import com.punchline.javalib.utils.SoundManager;
 import com.punchline.microspace.MicroGameOverInfo;
 import com.punchline.microspace.entities.GenericHealth;
@@ -67,7 +68,7 @@ public class BaseShipTemplate implements EntityTemplate {
 		fd.restitution = 0f;
 		
 		Body b = (Body) e.addComponent(new Body(world, e, bodyDef));
-		bloader.attachFixture(b.getBody(), "baseShip", fd, 120f);
+		bloader.attachFixture(b.getBody(), "baseShip", fd, Convert.pixelsToMeters(120f));
 		
 		//SPRITE
 		Sprite s = (Sprite) e.addComponent(new Sprite(shipTexture, shipRegion));

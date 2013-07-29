@@ -7,6 +7,7 @@ import com.punchline.javalib.entities.Entity;
 import com.punchline.javalib.entities.EntityWorld;
 import com.punchline.javalib.entities.components.physical.Body;
 import com.punchline.javalib.entities.templates.EntityGroupTemplate;
+import com.punchline.javalib.utils.Convert;
 
 /**
  * Builds a base!
@@ -39,28 +40,28 @@ public class BaseTemplate implements EntityGroupTemplate {
 		
 		//Set up towers.
 			//T1
-			baseStructures.add(world.createEntity("BaseTurret", team, new Vector2(ww - 230, -30).scl(multiplier))); 
-			baseStructures.add(world.createEntity("BaseTurret", team, new Vector2(ww - 230, 30).scl(multiplier))); 
-			baseStructures.add(world.createEntity("BaseTurret", team, new Vector2(ww - 290, -60).scl(multiplier))); 
-			baseStructures.add(world.createEntity("BaseTurret", team, new Vector2(ww - 290, 60).scl(multiplier))); 
-			baseStructures.add(world.createEntity("BaseTurret", team, new Vector2(ww - 290, -120).scl(multiplier))); 
-			baseStructures.add(world.createEntity("BaseTurret", team, new Vector2(ww - 290, 120).scl(multiplier)));
+			baseStructures.add(world.createEntity("BaseTurret", team, Convert.pixelsToMeters(new Vector2(ww - 230, -30).scl(multiplier)))); 
+			baseStructures.add(world.createEntity("BaseTurret", team, Convert.pixelsToMeters(new Vector2(ww - 230, 30).scl(multiplier)))); 
+			baseStructures.add(world.createEntity("BaseTurret", team, Convert.pixelsToMeters(new Vector2(ww - 290, -60).scl(multiplier)))); 
+			baseStructures.add(world.createEntity("BaseTurret", team, Convert.pixelsToMeters(new Vector2(ww - 290, 60).scl(multiplier)))); 
+			baseStructures.add(world.createEntity("BaseTurret", team, Convert.pixelsToMeters(new Vector2(ww - 290, -120).scl(multiplier)))); 
+			baseStructures.add(world.createEntity("BaseTurret", team, Convert.pixelsToMeters(new Vector2(ww - 290, 120).scl(multiplier))));
 		
 			//T2
-			baseStructures.add(world.createEntity("BaseTurret", team, new Vector2(ww - 820, -45).scl(multiplier))); 
-			baseStructures.add(world.createEntity("BaseTurret", team, new Vector2(ww - 820, 45).scl(multiplier)));
+			baseStructures.add(world.createEntity("BaseTurret", team, Convert.pixelsToMeters(new Vector2(ww - 820, -45).scl(multiplier)))); 
+			baseStructures.add(world.createEntity("BaseTurret", team, Convert.pixelsToMeters(new Vector2(ww - 820, 45).scl(multiplier))));
 			
 			//T3
-			baseStructures.add(world.createEntity("BaseTurret", team, new Vector2(ww - 1220, -45).scl(multiplier))); 
-			baseStructures.add(world.createEntity("BaseTurret", team, new Vector2(ww - 1220, 45).scl(multiplier)));
+			baseStructures.add(world.createEntity("BaseTurret", team, Convert.pixelsToMeters(new Vector2(ww - 1220, -45).scl(multiplier)))); 
+			baseStructures.add(world.createEntity("BaseTurret", team, Convert.pixelsToMeters(new Vector2(ww - 1220, 45).scl(multiplier))));
 		
 		//set up barracks
-		baseStructures.add(world.createEntity("BaseBarracks", team, new Vector2(ww - 250, -90).scl(multiplier))); 
-		baseStructures.add(world.createEntity("BaseBarracks", team, new Vector2(ww - 250, 90).scl(multiplier))); 
+		baseStructures.add(world.createEntity("BaseBarracks", team, Convert.pixelsToMeters(new Vector2(ww - 250, -90).scl(multiplier)))); 
+		baseStructures.add(world.createEntity("BaseBarracks", team, Convert.pixelsToMeters(new Vector2(ww - 250, 90).scl(multiplier)))); 
 		
 		//set up mining rigs
-		baseStructures.add(world.createEntity("BaseMine", team, new Vector2(ww - 80, 110).scl(multiplier))); 
-		baseStructures.add(world.createEntity("BaseMine", team, new Vector2(ww - 110, -110).scl(multiplier))); 
+		baseStructures.add(world.createEntity("BaseMine", team, Convert.pixelsToMeters(new Vector2(ww - 80, 110).scl(multiplier)))); 
+		baseStructures.add(world.createEntity("BaseMine", team, Convert.pixelsToMeters(new Vector2(ww - 110, -110).scl(multiplier)))); 
 		
 		//rotate entities for respective sides
 		for(Entity e : baseStructures){

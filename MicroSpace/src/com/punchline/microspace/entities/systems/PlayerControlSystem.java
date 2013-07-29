@@ -7,6 +7,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.punchline.javalib.entities.Entity;
 import com.punchline.javalib.entities.components.physical.Body;
 import com.punchline.javalib.entities.systems.InputSystem;
+import com.punchline.javalib.utils.Convert;
 import com.punchline.javalib.utils.SoundManager;
 
 public class PlayerControlSystem extends InputSystem {
@@ -42,8 +43,8 @@ public class PlayerControlSystem extends InputSystem {
 		
 		Vector2 velocity = new Vector2();
 		
-		aim.x = Gdx.input.getX() -Gdx.graphics.getWidth()/2f + world.getCamera().position.x;
-		aim.y= -Gdx.input.getY() +Gdx.graphics.getHeight()/2f + world.getCamera().position.y;
+		aim.x = Convert.pixelsToMeters(Gdx.input.getX() -Gdx.graphics.getWidth()/2f + world.getCamera().position.x);
+		aim.y= Convert.pixelsToMeters(-Gdx.input.getY() +Gdx.graphics.getHeight()/2f + world.getCamera().position.y);
 		
 		Vector2 fireL = aim.cpy().sub(b.getPosition());
 		

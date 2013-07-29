@@ -18,6 +18,7 @@ import com.punchline.javalib.entities.components.physical.Body;
 import com.punchline.javalib.entities.components.render.Sprite;
 import com.punchline.javalib.entities.templates.EntityTemplate;
 import com.punchline.javalib.utils.BodyEditorLoader;
+import com.punchline.javalib.utils.Convert;
 
 /**
  * @author William
@@ -58,7 +59,7 @@ public class BaseBarracksTemplate implements EntityTemplate {
 		fd.restitution = 0f;
 		
 		Body b = (Body) e.addComponent(new Body(world, e, bodyDef));
-		bloader.attachFixture(b.getBody(), "baseBarracks", fd, 128f);
+		bloader.attachFixture(b.getBody(), "baseBarracks", fd, Convert.pixelsToMeters(128f));
 		
 		//SPRITE
 		Sprite s = (Sprite) e.addComponent(new Sprite(barracksTexture, barracksRegion));

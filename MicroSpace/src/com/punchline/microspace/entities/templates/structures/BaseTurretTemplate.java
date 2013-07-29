@@ -17,6 +17,7 @@ import com.punchline.javalib.entities.components.physical.Body;
 import com.punchline.javalib.entities.components.render.Sprite;
 import com.punchline.javalib.entities.templates.EntityTemplate;
 import com.punchline.javalib.utils.BodyEditorLoader;
+import com.punchline.javalib.utils.Convert;
 
 /**
  * @author William
@@ -58,7 +59,7 @@ public class BaseTurretTemplate implements EntityTemplate {
 		fd.restitution = 0f;
 		
 		Body b = (Body) e.addComponent(new Body(world, e, bodyDef));
-		bloader.attachFixture(b.getBody(), "baseTurret", fd, 32f);
+		bloader.attachFixture(b.getBody(), "baseTurret", fd, Convert.pixelsToMeters(32f));
 		
 		//SPRITE
 		Sprite s = (Sprite) e.addComponent(new Sprite(turretTexture, turretRegion));
