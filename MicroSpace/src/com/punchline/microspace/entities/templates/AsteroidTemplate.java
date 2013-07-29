@@ -16,8 +16,6 @@ import com.punchline.javalib.entities.EntityWorld;
 import com.punchline.javalib.entities.GenericCollisionEvents;
 import com.punchline.javalib.entities.components.generic.Health;
 import com.punchline.javalib.entities.components.physical.Body;
-import com.punchline.javalib.entities.components.physical.Collidable;
-import com.punchline.javalib.entities.components.render.Renderable;
 import com.punchline.javalib.entities.components.render.Sprite;
 import com.punchline.javalib.utils.Convert;
 import com.punchline.microspace.entities.GenericHealth;
@@ -118,12 +116,12 @@ public class AsteroidTemplate implements EntityTemplate {
 		e.addComponent(body);
 		
 		Sprite sprite = new Sprite(asteroidsTexture, region);
-		e.addComponent(Renderable.class, sprite);
+		e.addComponent(sprite);
 		
 		Health health = new GenericHealth(e, world, maxHealth);
-		e.addComponent(Health.class, health);
+		e.addComponent(health);
 		
-		e.addComponent(Collidable.class, GenericCollisionEvents.damageVictim());
+		e.addComponent(GenericCollisionEvents.damageVictim());
 		
 		//Clean up
 		shape.dispose();

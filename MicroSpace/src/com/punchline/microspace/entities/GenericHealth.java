@@ -17,8 +17,7 @@ public class GenericHealth extends Health {
 			public void invoke(Entity owner, EntityWorld world) {
 				SoundManager.playSound("explosion");
 				
-				//TODO make explosion
-				world.createEntity("Explosion", owner.<Transform>getComponent().getPosition());
+				world.createEntity("Explosion", ((Transform) owner.getComponent(Transform.class)).getPosition());
 			}
 			
 		};

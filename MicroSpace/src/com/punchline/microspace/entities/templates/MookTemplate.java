@@ -12,10 +12,7 @@ import com.punchline.javalib.entities.Entity;
 import com.punchline.javalib.entities.EntityTemplate;
 import com.punchline.javalib.entities.EntityWorld;
 import com.punchline.javalib.entities.GenericCollisionEvents;
-import com.punchline.javalib.entities.components.generic.Health;
 import com.punchline.javalib.entities.components.physical.Body;
-import com.punchline.javalib.entities.components.physical.Collidable;
-import com.punchline.javalib.entities.components.render.Renderable;
 import com.punchline.javalib.entities.components.render.Sprite;
 import com.punchline.microspace.entities.GenericHealth;
 
@@ -67,12 +64,12 @@ public class MookTemplate implements EntityTemplate {
 		
 		Body b = new Body(world, e, bodyDef, fixtureDef);
 		
-		e.addComponent(Collidable.class, GenericCollisionEvents.damageVictim());
+		e.addComponent(GenericCollisionEvents.damageVictim());
 		
-		e.addComponent(Renderable.class, s);
+		e.addComponent(s);
 		e.addComponent(b);
 		
-		e.addComponent(Health.class, new GenericHealth(e, world, 1f));
+		e.addComponent(new GenericHealth(e, world, 1f));
 		
 		return e;
 	}

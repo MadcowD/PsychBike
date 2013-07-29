@@ -9,15 +9,15 @@ import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.punchline.javalib.entities.Entity;
-import com.punchline.javalib.entities.Entity.EntityEventCallback;
 import com.punchline.javalib.entities.EntityTemplate;
 import com.punchline.javalib.entities.EntityWorld;
 import com.punchline.javalib.entities.GenericCollisionEvents;
 import com.punchline.javalib.entities.components.generic.Health;
+import com.punchline.javalib.entities.components.generic.Health.HealthEventCallback;
 import com.punchline.javalib.entities.components.physical.Body;
-import com.punchline.javalib.entities.components.physical.Collidable;
-import com.punchline.javalib.entities.components.render.Renderable;
+import com.punchline.javalib.entities.components.physical.Transform;
 import com.punchline.javalib.entities.components.render.Sprite;
+import com.punchline.javalib.utils.SoundManager;
 import com.punchline.microspace.entities.GenericHealth;
 
 public class PlayerTemplate implements EntityTemplate {
@@ -69,27 +69,25 @@ public class PlayerTemplate implements EntityTemplate {
 		
 		Body b  = new Body(world, e, bd, fd);
 		
-		e.addComponent(Renderable.class, s);
+		e.addComponent(s);
 		e.addComponent(b);
 		
 		Health h = new GenericHealth(e, world, 10f);
 		h.render = true;
 		
-		e.addComponent(Health.class, h);
-		e.addComponent(Collidable.class, GenericCollisionEvents.damageVictim());
-		
-		e.OnDelete = new EntityEventCallback(){
-			EntityWorld world;
-			public EntityEventCallback init(EntityWorld world){
-				this.world = world;
-				return this;
-			}
-			
+		h.onDeath = new HealthEventCallback() {
 			@Override
-			public void invoke(Entity e) {
-				world.createEntity("Player", e.getGroup());
+			public void invoke(Entity owner, EntityWorld world) {
+				SoundManager.playSound("explosion");
+				
+				world.createEntity("Explosion", ((Transform) owner.getComponent(Transform.class)).getPosition());
+				
+				world.createEntity("Player", owner.getGroup()); //respawn
 			}
-		}.init(world);
+		};
+		
+		e.addComponent(h);
+		e.addComponent(GenericCollisionEvents.damageVictim());
 		
 		return e;
 	}

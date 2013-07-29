@@ -11,7 +11,6 @@ import com.punchline.javalib.entities.EntityWorld;
 import com.punchline.javalib.entities.components.physical.Particle;
 import com.punchline.javalib.entities.components.physical.Transform;
 import com.punchline.javalib.entities.components.render.Animation;
-import com.punchline.javalib.entities.components.render.Renderable;
 
 public class SmallPlanetTemplate implements EntityTemplate {
 	
@@ -48,7 +47,7 @@ public class SmallPlanetTemplate implements EntityTemplate {
 		
 		sprite.setStateTime(type); //Stay at this frame.
 		
-		e.addComponent(Renderable.class, sprite);
+		e.addComponent(sprite);
 		
 		Transform t = new Particle(e, position, 0f);
 		e.addComponent(t);

@@ -12,7 +12,6 @@ import com.punchline.javalib.entities.EntityWorld;
 import com.punchline.javalib.entities.components.physical.Particle;
 import com.punchline.javalib.entities.components.physical.Transform;
 import com.punchline.javalib.entities.components.render.Animation;
-import com.punchline.javalib.entities.components.render.Renderable;
 
 public class SmallStarTemplate implements EntityTemplate {
 
@@ -47,7 +46,7 @@ public class SmallStarTemplate implements EntityTemplate {
 		
 		Animation sprite = new Animation(sheetTexture, region, FRAMES_PER_ANIMATION, 1, frameTime);
 		sprite.setStateTime(rand.nextFloat());
-		e.addComponent(Renderable.class, sprite);
+		e.addComponent(sprite);
 		
 		Transform t = new Particle(e, position, 0f);
 		e.addComponent(t);

@@ -32,7 +32,7 @@ public class BaseTemplate implements EntityGroupTemplate {
 			multiplier = 1;
 		
 		float ww = world.getBounds().width/2f;
-		float wh = world.getBounds().width/2f;
+
 		//BUILD BASE
 		
 		baseStructures.add(world.createEntity("BaseShip", team, new Vector2(ww-100, 0).scl(multiplier)));
@@ -64,7 +64,7 @@ public class BaseTemplate implements EntityGroupTemplate {
 		
 		//rotate entities for respective sides
 		for(Entity e : baseStructures){
-			Body b = e.getComponent();
+			Body b = (Body) e.getComponent(Body.class);
 			b.setRotation(b.getRotation() + (float)(Math.PI/2f + multiplier*Math.PI/2f));
 		}
 		

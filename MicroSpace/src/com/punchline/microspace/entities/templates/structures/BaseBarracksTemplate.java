@@ -16,7 +16,6 @@ import com.punchline.javalib.entities.EntityWorld;
 import com.punchline.javalib.entities.components.generic.EntitySpawner;
 import com.punchline.javalib.entities.components.generic.Health;
 import com.punchline.javalib.entities.components.physical.Body;
-import com.punchline.javalib.entities.components.render.Renderable;
 import com.punchline.javalib.entities.components.render.Sprite;
 import com.punchline.javalib.utils.BodyEditorLoader;
 
@@ -58,11 +57,11 @@ public class BaseBarracksTemplate implements EntityTemplate {
 		fd.friction = 0.5f;
 		fd.restitution = 0f;
 		
-		Body b = e.addComponent(new Body(world, e, bodyDef));
+		Body b = (Body) e.addComponent(new Body(world, e, bodyDef));
 		bloader.attachFixture(b.getBody(), "baseBarracks", fd, 128f);
 		
 		//SPRITE
-		Sprite s = e.addComponent(Renderable.class, new Sprite(barracksTexture, barracksRegion));
+		Sprite s = (Sprite) e.addComponent(new Sprite(barracksTexture, barracksRegion));
 		s.setOrigin(bloader.getOrigin("baseBarracks", 128f).cpy().add(0, -72));
 		
 		

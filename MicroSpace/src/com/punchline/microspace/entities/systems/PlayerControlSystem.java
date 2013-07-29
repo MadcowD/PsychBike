@@ -38,7 +38,7 @@ public class PlayerControlSystem extends InputSystem {
 	protected void process(Entity e) {
 		super.process(e);
 	
-		Body b = e.getComponent();
+		Body b = (Body) e.getComponent(Body.class);
 		
 		Vector2 velocity = new Vector2();
 		
