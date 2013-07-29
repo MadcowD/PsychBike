@@ -7,16 +7,15 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
-import com.punchline.javalib.entities.ComponentManager;
 import com.punchline.javalib.entities.Entity;
-import com.punchline.javalib.entities.EntityTemplate;
 import com.punchline.javalib.entities.EntityWorld;
+import com.punchline.javalib.entities.components.ComponentManager;
 import com.punchline.javalib.entities.components.generic.Bullet;
 import com.punchline.javalib.entities.components.generic.Health;
 import com.punchline.javalib.entities.components.physical.Collidable;
 import com.punchline.javalib.entities.components.physical.Particle;
-import com.punchline.javalib.entities.components.render.Renderable;
 import com.punchline.javalib.entities.components.render.Sprite;
+import com.punchline.javalib.entities.templates.EntityTemplate;
 import com.punchline.javalib.utils.Convert;
 
 /**
@@ -43,7 +42,7 @@ public class BulletTemplate implements EntityTemplate {
 	
 	
 	/** {@inheritDoc}
-	 * @see com.punchline.javalib.entities.EntityTemplate#buildEntity(com.punchline.javalib.entities.Entity, com.punchline.javalib.entities.EntityWorld, java.lang.Object[])
+	 * @see com.punchline.javalib.entities.templates.EntityTemplate#buildEntity(com.punchline.javalib.entities.Entity, com.punchline.javalib.entities.EntityWorld, java.lang.Object[])
 	 */
 	@SuppressWarnings("unused")
 	@Override
@@ -72,15 +71,15 @@ public class BulletTemplate implements EntityTemplate {
 		
 
 		//Particle
-		Particle p = e.addComponent(new Particle(e, position, rotation, new Vector2(region.getRegionWidth()/2f, region.getRegionHeight()/2f)));
+		Particle p = (Particle)e.addComponent(new Particle(e, position, rotation, new Vector2(region.getRegionWidth()/2f, region.getRegionHeight()/2f)));
 		p.setLinearVelocity(linearVelocity);
 		
 
 		//Bullet
-		Bullet b = e.addComponent(new Bullet(firer, damage));
+		Bullet b = (Bullet)e.addComponent(new Bullet(firer, damage));
 		
 		//OnCollide
-		Collidable col = e.addComponent(Collidable.class,
+		Collidable col = (Collidable)e.addComponent(
 			new Collidable(){
 				@Override
 				public void onAdd(ComponentManager container) {
@@ -92,7 +91,7 @@ public class BulletTemplate implements EntityTemplate {
 	
 				@Override
 				public float onCollide(Entity container, Entity victim) {
-					Bullet b = container.getComponent();
+					Bullet b = (Bullet) container.getComponent(Bullet.class);
 					
 					//If the bullet hits the firer, continue firing the bullet.
 					if(victim.getGroup().equals(b.getFirer().getGroup())) 
@@ -102,7 +101,7 @@ public class BulletTemplate implements EntityTemplate {
 						//IF THE VICTIM HAS HEALTH! RAWR
 						if(victim.hasComponent(Health.class))
 						{
-							Health h = victim.getComponent();
+							Health h = (Health) victim.getComponent(Health.class);
 							h.drain(b.getDamage());
 						}
 						
@@ -113,7 +112,7 @@ public class BulletTemplate implements EntityTemplate {
 				}
 			});
 		//Sprite TODO: Consider sprite pooling.
-		e.addComponent(Renderable.class, new Sprite(bulletTex, bulletRect[0]));
+		e.addComponent(new Sprite(bulletTex, bulletRect[0]));
 		
 		return e;
 	}

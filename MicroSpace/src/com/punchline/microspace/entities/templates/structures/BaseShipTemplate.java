@@ -11,14 +11,13 @@ import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.punchline.javalib.entities.Entity;
-import com.punchline.javalib.entities.EntityTemplate;
 import com.punchline.javalib.entities.EntityWorld;
 import com.punchline.javalib.entities.components.generic.EntitySpawner;
 import com.punchline.javalib.entities.components.generic.Health;
 import com.punchline.javalib.entities.components.generic.Health.HealthEventCallback;
 import com.punchline.javalib.entities.components.physical.Body;
-import com.punchline.javalib.entities.components.render.Renderable;
 import com.punchline.javalib.entities.components.render.Sprite;
+import com.punchline.javalib.entities.templates.EntityTemplate;
 import com.punchline.javalib.utils.BodyEditorLoader;
 import com.punchline.javalib.utils.SoundManager;
 import com.punchline.microspace.MicroGameOverInfo;
@@ -44,7 +43,7 @@ public class BaseShipTemplate implements EntityTemplate {
 	}
 
 	/** {@inheritDoc}
-	 * @see com.punchline.javalib.entities.EntityTemplate#buildEntity(com.punchline.javalib.entities.Entity, com.punchline.javalib.entities.EntityWorld, java.lang.Object[])
+	 * @see com.punchline.javalib.entities.templates.EntityTemplate#buildEntity(com.punchline.javalib.entities.Entity, com.punchline.javalib.entities.EntityWorld, java.lang.Object[])
 	 */
 	@Override
 	public Entity buildEntity(Entity e, EntityWorld world, Object... args) {
@@ -67,25 +66,24 @@ public class BaseShipTemplate implements EntityTemplate {
 		fd.friction = 0.5f;
 		fd.restitution = 0f;
 		
-		Body b = e.addComponent(new Body(world, e, bodyDef));
+		Body b = (Body) e.addComponent(new Body(world, e, bodyDef));
 		bloader.attachFixture(b.getBody(), "baseShip", fd, 120f);
 		
 		//SPRITE
-		Sprite s = e.addComponent(Renderable.class, new Sprite(shipTexture, shipRegion));
+		Sprite s = (Sprite) e.addComponent(new Sprite(shipTexture, shipRegion));
 		s.setOrigin(bloader.getOrigin("baseShip", 120f));
 		
 		
 		//HEALTH
 		
 		Health health = new GenericHealth(e, world, HEALTH);
+		
 		health.render = true;
 		health.onDeath = new HealthEventCallback() {
 
 			@Override
 			public void invoke(Entity owner, EntityWorld world) {
 				SoundManager.playSound("explosion");
-				
-				//TODO make badass explosion
 				
 				String winningTeam = group.equals("leftTeam") ? "rightTeam" : "leftTeam";
 				
@@ -94,7 +92,7 @@ public class BaseShipTemplate implements EntityTemplate {
 			
 		};
 		
-		e.addComponent(Health.class, health);
+		e.addComponent(health);
 		float offset = group.equals("leftTeam") ? HORIZONTAL_OFFSET : -HORIZONTAL_OFFSET;
 		e.addComponent(new EntitySpawner("Mook", false, 5, e.getGroup(), b.getPosition().cpy().add(new Vector2(offset, 0))));
 		

@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 import com.badlogic.gdx.math.Vector2;
 import com.punchline.javalib.entities.Entity;
-import com.punchline.javalib.entities.EntityGroupTemplate;
 import com.punchline.javalib.entities.EntityWorld;
 import com.punchline.javalib.entities.components.physical.Body;
+import com.punchline.javalib.entities.templates.EntityGroupTemplate;
 
 /**
  * Builds a base!
@@ -32,7 +32,7 @@ public class BaseTemplate implements EntityGroupTemplate {
 			multiplier = 1;
 		
 		float ww = world.getBounds().width/2f;
-		float wh = world.getBounds().width/2f;
+
 		//BUILD BASE
 		
 		baseStructures.add(world.createEntity("BaseShip", team, new Vector2(ww-100, 0).scl(multiplier)));
@@ -64,7 +64,7 @@ public class BaseTemplate implements EntityGroupTemplate {
 		
 		//rotate entities for respective sides
 		for(Entity e : baseStructures){
-			Body b = e.getComponent();
+			Body b = (Body) e.getComponent(Body.class);
 			b.setRotation(b.getRotation() + (float)(Math.PI/2f + multiplier*Math.PI/2f));
 		}
 		

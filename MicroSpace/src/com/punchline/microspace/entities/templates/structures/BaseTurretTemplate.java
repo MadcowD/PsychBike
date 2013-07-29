@@ -11,12 +11,11 @@ import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.punchline.javalib.entities.Entity;
-import com.punchline.javalib.entities.EntityTemplate;
 import com.punchline.javalib.entities.EntityWorld;
 import com.punchline.javalib.entities.components.generic.Health;
 import com.punchline.javalib.entities.components.physical.Body;
-import com.punchline.javalib.entities.components.render.Renderable;
 import com.punchline.javalib.entities.components.render.Sprite;
+import com.punchline.javalib.entities.templates.EntityTemplate;
 import com.punchline.javalib.utils.BodyEditorLoader;
 
 /**
@@ -36,7 +35,7 @@ public class BaseTurretTemplate implements EntityTemplate {
 	}
 
 	/** {@inheritDoc}
-	 * @see com.punchline.javalib.entities.EntityTemplate#buildEntity(com.punchline.javalib.entities.Entity, com.punchline.javalib.entities.EntityWorld, java.lang.Object[])
+	 * @see com.punchline.javalib.entities.templates.EntityTemplate#buildEntity(com.punchline.javalib.entities.Entity, com.punchline.javalib.entities.EntityWorld, java.lang.Object[])
 	 */
 	@Override
 	public Entity buildEntity(Entity e, EntityWorld world, Object... args) {
@@ -58,16 +57,16 @@ public class BaseTurretTemplate implements EntityTemplate {
 		fd.friction = 0.5f;
 		fd.restitution = 0f;
 		
-		Body b = e.addComponent(new Body(world, e, bodyDef));
+		Body b = (Body) e.addComponent(new Body(world, e, bodyDef));
 		bloader.attachFixture(b.getBody(), "baseTurret", fd, 32f);
 		
 		//SPRITE
-		Sprite s = e.addComponent(Renderable.class, new Sprite(turretTexture, turretRegion));
+		Sprite s = (Sprite) e.addComponent(new Sprite(turretTexture, turretRegion));
 		s.setOrigin(bloader.getOrigin("baseTurret", 32f).cpy().add(0, -10));
 		
 		
 		//HEALTH
-		Health h = e.addComponent(new Health(e, world, 1500f));
+		Health h = (Health) e.addComponent(new Health(e, world, 1500f));
 		h.render = true;
 		
 		return e;

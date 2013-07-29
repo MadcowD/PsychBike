@@ -6,12 +6,10 @@ package com.punchline.microspace.entities.templates;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.punchline.javalib.entities.Entity;
-import com.punchline.javalib.entities.EntityTemplate;
 import com.punchline.javalib.entities.EntityWorld;
 import com.punchline.javalib.entities.components.physical.Particle;
-import com.punchline.javalib.entities.components.physical.Transform;
 import com.punchline.javalib.entities.components.render.ParticleEffect;
-import com.punchline.javalib.entities.components.render.Renderable;
+import com.punchline.javalib.entities.templates.EntityTemplate;
 
 /**
  * @author William
@@ -35,7 +33,7 @@ public class ExplosionTemplate implements EntityTemplate {
 		//location of the explosion.
 		e.addComponent(new Particle(e, position, 0f, new Vector2(0,0)));
 		
-		ParticleEffect p = e.addComponent(Renderable.class, new ParticleEffect(
+		ParticleEffect p = (ParticleEffect) e.addComponent(new ParticleEffect(
 				Gdx.files.internal("data/Particles/explosion"),
 				Gdx.files.internal("data/Particles")));
 		p.start();
