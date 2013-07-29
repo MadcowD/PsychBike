@@ -105,17 +105,17 @@ public class PlayerControlSystem extends InputSystem {
 			return true;
 		}
 		
-		if (keycode == Keys.W){
+		if (keycode == Keys.W) {
 			movingUp = true;
 			return true;
 		}
 		
-		if (keycode == Keys.D){
+		if (keycode == Keys.D) {
 			movingRight = true;
 			return true;
 		}
 		
-		if (keycode == Keys.S){
+		if (keycode == Keys.S) {
 			movingDown = true;
 			return true;
 		}
