@@ -13,9 +13,8 @@ import com.punchline.javalib.entities.EntityWorld;
 import com.punchline.javalib.entities.GenericCollisionEvents;
 import com.punchline.javalib.entities.components.generic.Health;
 import com.punchline.javalib.entities.components.generic.Health.HealthEventCallback;
+import com.punchline.javalib.entities.components.generic.View;
 import com.punchline.javalib.entities.components.physical.Body;
-import com.punchline.javalib.entities.components.physical.Sensor;
-import com.punchline.javalib.entities.components.physical.Sensor.SensorCallback;
 import com.punchline.javalib.entities.components.physical.Transform;
 import com.punchline.javalib.entities.components.render.Sprite;
 import com.punchline.javalib.entities.templates.EntityCreationArgs;
@@ -80,24 +79,7 @@ public class PlayerTemplate implements EntityTemplate {
 		final Health h = new GenericHealth(e, world, 10f);
 		h.render = true;
 		
-		Sensor sensor = new Sensor(e, 15f, 0.3f);
-		sensor.onDetection = new SensorCallback() {
-
-			@Override
-			public void invoke(Entity e) {
-				h.render = false;
-			}
-			
-		};
-		
-		sensor.onEscape = new SensorCallback() {
-
-			@Override
-			public void invoke(Entity e) {
-				h.render = true;
-			}
-			
-		};
+		View sensor = new View(e, 15f, 0.3f);
 		
 		e.addComponent(sensor);
 		
