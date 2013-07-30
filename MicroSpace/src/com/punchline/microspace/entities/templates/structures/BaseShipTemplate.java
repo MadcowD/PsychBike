@@ -31,7 +31,7 @@ import com.punchline.microspace.entities.GenericHealth;
 public class BaseShipTemplate implements EntityTemplate {
 	
 	private static final int HEALTH = 30;
-	private static final float HORIZONTAL_OFFSET = 50f;
+	private static final float HORIZONTAL_OFFSET = Convert.pixelsToMeters(50f);
 	
 	private Texture shipTexture;
 	private TextureRegion shipRegion;
@@ -43,9 +43,6 @@ public class BaseShipTemplate implements EntityTemplate {
 		shipRegion = new TextureRegion(shipTexture, 0,0, 120, 127);
 	}
 
-	/** {@inheritDoc}
-	 * @see com.punchline.javalib.entities.templates.EntityTemplate#buildEntity(com.punchline.javalib.entities.Entity, com.punchline.javalib.entities.EntityWorld, java.lang.Object[])
-	 */
 	@Override
 	public Entity buildEntity(Entity e, EntityWorld world, Object... args) {
 		final String group = (String)args[0];
