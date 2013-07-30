@@ -33,7 +33,13 @@ public class SpaceWorld extends EntityWorld {
 		super(input, camera, new Vector2(0, 0), true);
 		
 		debugView.enabled = true;
+<<<<<<< HEAD
 		debugView.visible = true; //TODO: Remember to disable this...
+=======
+		debugView.visible = false; //TODO: Remember to disable this...
+		
+		Worlds.worlds.add(this);
+>>>>>>> 75d6556ae3311c91d4f50c8da040fd59609cf01f
 	}
 
 	/**

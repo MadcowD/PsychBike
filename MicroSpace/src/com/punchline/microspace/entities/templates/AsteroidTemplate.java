@@ -115,6 +115,8 @@ public class AsteroidTemplate implements EntityTemplate {
 		Body body = new Body(world, e, bodyDef, fixtureDef);
 		e.addComponent(body);
 		
+		
+		
 		Sprite sprite = new Sprite(asteroidsTexture, region);
 		e.addComponent(sprite);
 		
