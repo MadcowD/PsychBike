@@ -3,6 +3,7 @@
 	<name>MicroSpace</name>
 	<comment></comment>
 	<projects>
+		<project>JavaLib</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

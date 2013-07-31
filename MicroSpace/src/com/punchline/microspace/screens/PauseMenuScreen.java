@@ -1,6 +1,7 @@
 package com.punchline.microspace.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -17,7 +18,7 @@ public class PauseMenuScreen extends MenuScreen {
 		super(game, Gdx.files.internal("data/Skin/uiskin.json"), "Paused", null);
 		
 		this.gameplayScreen = gameplayScreen;
-	}	
+	}
 
 	@Override
 	protected void initialize() {
@@ -60,12 +61,22 @@ public class PauseMenuScreen extends MenuScreen {
 		window.row();
 		
 	}
+	
+	@Override
+	public boolean keyDown(int keycode) {
+		if (keycode == Keys.ESCAPE || keycode == Keys.BACK) {
+			onPlayGamePressed();
+			return true;
+		}
+		
+		return false;
+	}
 
 	/**
 	 * Called when the Play Game button is pressed.
 	 */
 	private void onPlayGamePressed() {
-		game.setScreen(gameplayScreen, false);
+		game.setScreen(gameplayScreen);
 	}
 	
 	/**

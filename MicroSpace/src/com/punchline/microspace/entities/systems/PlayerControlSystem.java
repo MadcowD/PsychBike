@@ -71,7 +71,7 @@ public class PlayerControlSystem extends InputSystem {
 			b.setRotation((float)Math.toRadians(fireL.angle()));
 		
 		elapsedShot += deltaSeconds();
-		if(Gdx.input.isTouched()){
+		if(Gdx.input.isTouched()) {
 			b.setRotation((float)Math.toRadians(fireL.angle()));
 			if (elapsedShot >= SHOT_DELAY) {	
 				b.setRotation((float)Math.toRadians(fireL.angle()));
