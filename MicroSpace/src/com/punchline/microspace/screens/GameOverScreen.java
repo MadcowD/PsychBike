@@ -1,6 +1,7 @@
 package com.punchline.microspace.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -36,6 +37,19 @@ public class GameOverScreen extends MenuScreen {
 		
 		window.add(quitButton);
 		
+	}
+
+	@Override
+	public boolean keyDown(int keycode) {
+		if (keycode == Keys.ESCAPE || keycode == Keys.BACK) {
+			game.setScreen(new MainMenuScreen(game));
+			
+			SoundManager.playSound("back");
+			
+			return true;
+		}
+		
+		return false;
 	}
 	
 	
