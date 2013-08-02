@@ -89,8 +89,13 @@ public class BulletTemplate implements EntityTemplate {
 				}
 	
 				@Override
-				public float onCollide(Entity container, Entity victim) {
+				public float onCollide(Entity container, Entity victim) {					
 					Bullet b = (Bullet) container.getComponent(Bullet.class);
+					
+					if (victim == null) {
+						container.delete();
+						return 0;
+					}
 					
 					//If the bullet hits the firer, continue firing the bullet.
 					if(victim.getGroup().equals(b.getFirer().getGroup())) 
@@ -110,6 +115,7 @@ public class BulletTemplate implements EntityTemplate {
 					}
 				}
 			});
+		
 		//Sprite TODO: Consider sprite pooling.
 		e.addComponent(new Sprite(bulletTex, bulletRect[0]));
 		

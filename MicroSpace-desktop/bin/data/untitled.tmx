@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="30" height="30" tilewidth="8" tileheight="8">
+ <tileset firstgid="1" name="tiles" tilewidth="8" tileheight="8">
+  <image source="Textures/tiles.png" width="256" height="256"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjILhCxiBmIUAVqaBvSpUUjNq76i9I9neRAbC+deVBvaOglEwCkbBSAIA14QDAw==
+  </data>
+ </layer>
+ <objectgroup name="physics" width="30" height="30">
+  <object x="104" y="80" width="7" height="70"/>
+  <object x="103" y="145" width="81" height="6"/>
+  <object x="176" y="82" width="7" height="68"/>
+  <object x="104" y="80" width="79" height="6"/>
+ </objectgroup>
+</map>

@@ -34,12 +34,8 @@ public class SpaceWorld extends EntityWorld {
 		
 		debugView.enabled = true;
 		debugView.visible = true; //TODO: Remember to disable this...
-		debugView.visible = false; //TODO: Remember to disable this...
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	@Override
 	public void process() {
 		super.process();
@@ -73,9 +69,6 @@ public class SpaceWorld extends EntityWorld {
 		systems.addSystem(new AsteroidSpawnSystem());
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	@Override
 	protected void buildTemplates() {
 		super.buildTemplates();
@@ -106,19 +99,20 @@ public class SpaceWorld extends EntityWorld {
 		addTemplate("Mook", new MookTemplate());
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	@Override
 	protected void buildEntities() {
 		super.buildEntities();
+		
 		createEntityGroup("StarField");	
+		
+		createEntity("TileMap", "data/untitled.tmx", null);
 		
 		//BUILD BASES
 		createEntityGroup("Base", "leftTeam");
 		createEntityGroup("Base", "rightTeam");
 		
 		createEntity("Player", "leftTeam");
+		
 	}
 	
 }
