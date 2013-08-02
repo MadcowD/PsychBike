@@ -5,13 +5,18 @@
  </tileset>
  <layer name="Tile Layer 1" width="30" height="30">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjILhCxiBmIUAVqaBvSpUUjNq76i9I9neRAbC+deVBvaOglEwCkbBSAIA14QDAw==
+   eJxjYBgFo2AUjILhCxiBmIUAVqSBvSpUUkMIsDKg+sWRTvaSYwa59rowIPznSkd7KQVDzV7kcCYnj9DCv4l43ERJmhgFo2AUjIJRgAAApYcDrQ==
   </data>
  </layer>
  <objectgroup name="physics" width="30" height="30">
-  <object x="104" y="80" width="7" height="70"/>
-  <object x="103" y="145" width="81" height="6"/>
-  <object x="176" y="82" width="7" height="68"/>
-  <object x="104" y="80" width="79" height="6"/>
+  <object x="104" y="80" width="78" height="7"/>
+  <object x="175" y="80" width="8" height="71"/>
+  <object name="door" x="105" y="144" width="78" height="6"/>
+  <object x="105" y="138" width="5" height="12"/>
+  <object x="49" y="137" width="62" height="6"/>
+  <object x="48" y="112" width="30" height="7"/>
+  <object x="72" y="96" width="7" height="22"/>
+  <object x="72" y="96" width="38" height="6"/>
+  <object x="104" y="79" width="6" height="21"/>
  </objectgroup>
 </map>
