@@ -1,8 +1,7 @@
 package com.punchline.microspace.entities.templates.structures;
 
-import java.util.ArrayList;
-
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.Array;
 import com.punchline.javalib.entities.Entity;
 import com.punchline.javalib.entities.EntityWorld;
 import com.punchline.javalib.entities.components.physical.Body;
@@ -21,8 +20,8 @@ public class BaseTemplate implements EntityGroupTemplate {
 	}
 
 	@Override
-	public ArrayList<Entity> buildEntities(EntityWorld world, Object... args) {
-		ArrayList<Entity> baseStructures = new ArrayList<Entity>();
+	public Array<Entity> buildEntities(EntityWorld world, Object... args) {
+		Array<Entity> baseStructures = new Array<Entity>();
 		
 		//ARGS
 		String team = (String)args[0];

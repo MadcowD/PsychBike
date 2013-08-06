@@ -1,10 +1,10 @@
 package com.punchline.microspace.entities.templates.scenery;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.Array;
 import com.punchline.javalib.entities.Entity;
 import com.punchline.javalib.entities.EntityWorld;
 import com.punchline.javalib.entities.templates.EntityGroupTemplate;
@@ -22,12 +22,12 @@ public class StarFieldTemplate implements EntityGroupTemplate {
 	private static final int SMALL_PLANET_WIDTH = 24, SMALL_PLANET_HEIGHT = 25;
 	private static final int BIG_STAR_WIDTH = 24, BIG_STAR_HEIGHT = 25;
 	
-	private ArrayList<Rectangle> usedSpots = new ArrayList<Rectangle>();
+	private Array<Rectangle> usedSpots = new Array<Rectangle>();
 	
 	@Override
-	public ArrayList<Entity> buildEntities(EntityWorld world, Object... args) {
+	public Array<Entity> buildEntities(EntityWorld world, Object... args) {
 		
-		ArrayList<Entity> group = new ArrayList<Entity>();
+		Array<Entity> group = new Array<Entity>();
 		
 		Rectangle bounds = world.getBounds();
 		float xRange = bounds.width / 2;
