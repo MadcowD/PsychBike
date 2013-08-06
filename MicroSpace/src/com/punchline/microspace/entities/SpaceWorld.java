@@ -105,7 +105,7 @@ public class SpaceWorld extends EntityWorld {
 		
 		createEntityGroup("StarField");	
 		
-		createEntity("TileMap", "data/untitled.tmx", null);
+		map = createEntity("TileMap", "data/untitled.tmx", null);
 		
 		//BUILD BASES
 		createEntityGroup("Base", "leftTeam");
