@@ -115,8 +115,6 @@ public class AsteroidTemplate implements EntityTemplate {
 		Body body = new Body(world, e, bodyDef, fixtureDef);
 		e.addComponent(body);
 		
-		
-		
 		Sprite sprite = new Sprite(asteroidsTexture, region);
 		e.addComponent(sprite);
 		
@@ -124,9 +122,6 @@ public class AsteroidTemplate implements EntityTemplate {
 		e.addComponent(health);
 		
 		e.addComponent(GenericCollisionEvents.damageVictim());
-		
-		//Clean up
-		shape.dispose();
 		
 		return e;
 	}
