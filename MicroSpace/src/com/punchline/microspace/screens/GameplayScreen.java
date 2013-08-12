@@ -26,8 +26,8 @@ public class GameplayScreen extends InputScreen {
 	public GameplayScreen(BaseGame game) {
 		super(game);
 		
-		camera = new OrthographicCamera();
-		camera.setToOrtho(false, Display.getPreferredWidth(), Display.getPreferredHeight());
+		camera = new OrthographicCamera(Display.getPreferredWidth(), Display.getPreferredHeight());
+		//camera.setToOrtho(false, Display.getPreferredWidth(), Display.getPreferredHeight());
 		
 		world = new SpaceWorld(game.getInput(), camera);
 	}
