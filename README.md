@@ -1,4 +1,4 @@
-MicroSpace
+PsychBike
 ==========
 
-7dRTS game.
+A test game made using JavaLib :)
