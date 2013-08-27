@@ -15,7 +15,7 @@ import com.punchline.javalib.utils.Convert;
 public class BikeWorld extends EntityWorld {
 	
 	public BikeWorld(InputMultiplexer input, Camera camera) {
-		super(input, camera, new Vector2(0, 9.8f), true);
+		super(input, camera, new Vector2(0, 9.8f));
 		
 	}
 

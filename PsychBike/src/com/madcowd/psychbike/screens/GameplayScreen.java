@@ -3,7 +3,7 @@ package com.madcowd.psychbike.screens;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.madcowd.psychbike.entities.BikeWorld;
-import com.punchline.javalib.BaseGame;
+import com.punchline.javalib.Game;
 import com.punchline.javalib.entities.EntityWorld;
 import com.punchline.javalib.states.InputScreen;
 import com.punchline.javalib.utils.Display;
@@ -22,17 +22,16 @@ public class GameplayScreen extends InputScreen {
 	 * Constructs a GameplayScreen.
 	 * @param game The game that owns this screen.
 	 */
-	public GameplayScreen(BaseGame game) {
+	public GameplayScreen(Game game) {
 		super(game);
 		
 		camera = new OrthographicCamera(Display.getPreferredWidth(), Display.getPreferredHeight());
-		//camera.setToOrtho(false, Display.getPreferredWidth(), Display.getPreferredHeight());
 		
 		world = new BikeWorld(game.getInput(), camera);
 	}
 
 	private void onPaused() {
-		game.setScreen(new PauseMenuScreen(game, this), false);
+		game.getScreenManager().addScreen(new PauseMenuScreen(game));
 	}
 	
 	@Override
@@ -48,6 +47,8 @@ public class GameplayScreen extends InputScreen {
 	@Override
 	public void render(float delta) {
 		world.process();
+
+		
 	}
 
 	@Override

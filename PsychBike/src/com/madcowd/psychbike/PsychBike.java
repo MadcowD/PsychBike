@@ -3,12 +3,12 @@ package com.madcowd.psychbike;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
 import com.madcowd.psychbike.screens.MainMenuScreen;
-import com.punchline.javalib.BaseGame;
+import com.punchline.javalib.Game;
 import com.punchline.javalib.states.screens.SplashScreen;
 import com.punchline.javalib.utils.Convert;
 import com.punchline.javalib.utils.SoundManager;
 
-public class PsychBike extends BaseGame {
+public class PsychBike extends Game {
 	
 	@Override
 	public void create() {
@@ -20,7 +20,7 @@ public class PsychBike extends BaseGame {
 		
 		super.create();
 		
-		setScreen(new SplashScreen(this, Gdx.files.internal("data/Textures/splash.png"), new MainMenuScreen(this), 1.25f, 4f, 1.25f));
+		this.getScreenManager().addScreen(new SplashScreen(this, Gdx.files.internal("data/Textures/splash.png"), new MainMenuScreen(this), 1.25f, 4f, 1.25f));
 	}
 	
 	@Override
