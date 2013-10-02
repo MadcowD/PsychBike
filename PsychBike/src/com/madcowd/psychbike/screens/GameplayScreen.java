@@ -47,11 +47,8 @@ public class GameplayScreen extends InputScreen {
 	@Override
 	public void render(float delta) {
 		world.process();
+
 		
-		if (world.isGameOver()) {
-			
-			exit();
-		}
 	}
 
 	@Override
